@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Paladi (Pd)</title>
+  <style>
+    body {
+      
+	  font-family: Arial, Times New Roman, Helvetica, Verdana, Courier New, sans-serif;
+      margin: 40px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 { color: #333; }
+    .symbol {
+      font-size: 60px;
+      color: #333;
+    }
+    .info {
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    img, video {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #response {
+      background: #f0f0f0;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 5px;
+      min-height: 50px;
+    }
+/* Thêm CSS cho nút đáp án và hướng dẫn */
+  .extra-buttons 
+  {
+    margin-top: 5px;
+    display: none;
+  }
+  .extra-buttons button 
+  {
+    margin-right: 10px;
+    background-color: #28a745;
+  }
+  .extra-buttons button:hover 
+  {
+    background-color: #1e7e34;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!--<h1>Bo (B)</h1> -->
+    <div class="symbol">Pd</div>
+    <div class="info">
+	  <p><strong>Tên:</strong> Paladi</p>
+	  <p><strong>Tên tiếng Anh:</strong> Palladium </p>
+	  <p><strong>Nguồn gốc tên gọi:</strong> đặt theo theo tên của tiểu hành tinh 2 Pallas - có thời từng được xem là hành tinh.</p>  
+      <p><strong>Số hiệu nguyên tử:</strong> 46</p>
+      <p><strong>Nguyên tử khối:</strong> 106,42</p>
+      <p><strong>Loại:</strong> Kim loại chuyển tiếp</p>
+	  <p>được phát hiện không lâu trước khi nguyên tố này được tìm ra (khoảng năm 1803).</p>
+      <p><strong>Màu sắc:</strong>   Trắng bạc sáng, ánh kim</p> 
+	  <p><strong>Phản ứng:</strong></p>
+      <ul>
+       Rất bền trong điều kiện thường, không bị oxy hóa trong không khí.<br>
+Có khả năng hấp thụ khí hydro rất lớn (gấp hàng trăm lần thể tích của nó).<br>
+Tan trong aqua regia (nước cường toan), nhưng không tan trong axit mạnh thông thường.<br>
+Tạo các hợp chất với halogen, sulfur, phosphor ở điều kiện đặc biệt.<br>
+
+      </ul>
+      <p><strong>Ứng dụng:</strong></p>
+<p style="text-align: justify;">
+   Chất xúc tác trong công nghiệp hóa dầu, tổng hợp hữu cơ và xử lý khí thải.<br>
+Dùng trong cảm biến hydro do khả năng hấp thụ khí hydro cao.<br>
+Hợp kim palladium-vàng hoặc palladium-bạc được dùng trong nha khoa và chế tác trang sức cao cấp.<br>
+Dùng trong điện tử: sản xuất tụ điện, linh kiện bán dẫn.<br>
+Ứng dụng trong pin nhiên liệu và nghiên cứu năng lượng sạch.<br>
+Có trong quặng platin<br>
+Chất xúc tác trong phản ứng hóa học, pin nhiên liệu
+
+</p>
+    </div>
+
+<!-- Ảnh minh họa -->
+	<img src="../images/Palladium.jpg" alt="Palladium" style="width:612px; margin-top:10px;">
+
+
+<!-- Video minh họa -->
+	<h3>Video minh hoạ: Palladium trong đời sống</h3>
+	<!-- chèn video từ thư mục Video -->
+	<!--	<video width="480" controls>
+			<source src="../videos/hydrogen.mp4" type="video/mp4">
+			Trình duyệt của bạn không hỗ trợ video.
+		</video> -->
+		
+	<div style="text-align: center; margin-top: 20px;">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/FC-OBl9Eiiw?si=Nw4rCpk7U2chZB0D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	</div>	
+
+		
+	<br>
+	<div style="text-align: center; margin-top: 20px;">		
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/4ALTGeqmNFM?si=zTcSAU1tPSM-6ijc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	</div>
+
+		
+<!-- Lư ý, Video phải ở dạng cấu trúc: src="https://www.youtube.com/embed/dQw4w9WgXcQ" -->
+	<!--<video width="612" height="612" controls>
+		<source src="https://www.w3schools.com/html/mov_bbb.mp4"" type="video/mp4">
+		<source src="movie.ogg" type="video/ogg">
+		Trình duyệt của bạn không hỗ trợ thẻ video.
+	</video> -->
+	
+	<br>
+	<a href="https://vi.wikipedia.org/wiki/Paladi"><b><div>Xem thêm về Palladium </div></b></a><br>
+
+<div style="text-align: center; margin-top: 20px;">
+<h3>Mini Quiz: Kiểm tra kiến thức về Palladium</h3>
+</div>
+<div id="quiz">
+  <p><strong>Câu hỏi 1:</strong> Palladium có khả năng hấp thụ hydro rất lớn.</p>
+  <button onclick="checkAnswer(1, true)">Đúng</button>
+  <button onclick="checkAnswer(1, false)">Sai</button>
+  <p id="result1"></p>
+  <div class="extra-buttons" id="extra1">
+    <button onclick="showAnswer(1)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(1)">Hướng dẫn giải</button>
+  </div>
+
+  <p><strong>Câu hỏi 2:</strong> Palladium dễ bị oxy hóa ngoài không khíc.</p>
+  <button onclick="checkAnswer(2, false)">Đúng</button>
+  <button onclick="checkAnswer(2, true)">Sai</button>
+  <p id="result2"></p>
+  <div class="extra-buttons" id="extra2">
+    <button onclick="showAnswer(2)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(2)">Hướng dẫn giải</button>
+  </div>
+  
+  <p><strong>Câu hỏi 3:</strong> Tên gọi Palladium bắt nguồn từ một tiểu hành tinh.</p>
+  <button onclick="checkAnswer(3, true)">Đúng</button>
+  <button onclick="checkAnswer(3, false)">Sai</button>
+  <p id="result3"></p>
+  <div class="extra-buttons" id="extra3">
+    <button onclick="showAnswer(13)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(3)">Hướng dẫn giải</button>
+  </div>
+  
+  <p><strong>Câu hỏi 4:</strong> Palladium thường được dùng trong sản xuất thép không gỉ.</p>
+  <button onclick="checkAnswer(4, false)">Đúng</button>
+  <button onclick="checkAnswer(4, true)">Sai</button>
+  <p id="result4"></p>
+  <div class="extra-buttons" id="extra4">
+    <button onclick="showAnswer(4)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(4)">Hướng dẫn giải</button>
+  </div>
+  
+  <p><strong>Câu hỏi 5:</strong> Palladium là một chất xúc tác hiệu quả trong công nghiệp.</p>
+  <button onclick="checkAnswer(5, true)">Đúng</button>
+  <button onclick="checkAnswer(5, false">Sai</button>
+  <p id="result5"></p>
+  <div class="extra-buttons" id="extra5">
+    <button onclick="showAnswer(5)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(5)">Hướng dẫn giải</button>
+  </div>
+  
+</div>
+<!-- Quizz -->
+	<script>
+  const answers = {
+    1: "Đúng",
+    2: "Sai",
+    3: "Đúng",
+    4: "Sai",
+    5: "Đúng"
+  };
+  const explanations = {
+    1: "Palladium có khả năng hấp thụ một lượng hydro lớn gấp hàng trăm lần thể tích của chính nó. Tính chất này khiến nó quan trọng trong các ứng dụng lưu trữ hydro, lọc khí và cảm biến khí hydro.",
+    2: "Pd là kim loại quý, khá trơ trong không khí ở điều kiện thường, không bị oxy hóa dễ dàng. Tính chất giống các kim loại thuộc nhóm bạch kim như Pt, Rh.",
+    3: "Palladium được đặt theo tên của tiểu hành tinh Pallas, được phát hiện gần thời điểm nhà hóa học William Hyde Wollaston phát hiện nguyên tố này (năm 1803). “Pallas” vốn là tên một nữ thần trong thần thoại Hy Lạp.",
+    4: "Pd không phải là nguyên tố chính dùng trong thép không gỉ. Cr (Crôm) là nguyên tố chủ yếu tạo tính “không gỉ” cho thép. Pd chủ yếu dùng: Trong bộ chuyển đổi xúc tác xe hơi; Xúc tác hóa học; Điện tử và mạ kim loại cao cấp.",
+    5: "Pd là chất xúc tác rất hiệu quả, đặc biệt trong: Phản ứng hydro hóa; Phản ứng ghép nối hữu cơ (phản ứng Suzuki, Heck...); Chuyển đổi khí thải ô tô (giống Pt, Rh)"
+  };
+  function checkAnswer(questionNumber, isCorrect) {
+    const result = document.getElementById('result' + questionNumber);
+    const extra = document.getElementById('extra' + questionNumber);
+    if (isCorrect) {
+      result.textContent = '✅ Chính xác!';
+      result.style.color = 'green';
+      extra.style.display = 'none'; // Ẩn nếu trả lời đúng
+    } else {
+      result.textContent = '❌ Sai rồi.';
+      result.style.color = 'red';
+      extra.style.display = 'block'; // Hiện thêm nút khi sai
+    }
+  }
+  function showAnswer(questionNumber) {
+    alert("Đáp án đúng là: " + answers[questionNumber]);
+  }
+  function showExplanation(questionNumber) {
+    alert("Giải thích: " + explanations[questionNumber]);
+  }
+</script>
+
+
+
+
+	
+   
+
+<!-- Phát âm tiếng Việt và Anh -->
+	<script>
+	function speak(text, lang = 'vi-VN') 
+	{
+	const utterance = new SpeechSynthesisUtterance(text);
+	utterance.lang = lang;
+	speechSynthesis.speak(utterance);
+	}
+
+	window.onload = function () 
+	{
+	const params = new URLSearchParams(window.location.search);
+	const nameVI = params.get('vi'); // ví dụ: Hydro
+	const nameEN = params.get('en'); // ví dụ: Hydrogen
+	if (nameVI && nameEN) 
+	{
+    speak(nameVI, 'vi-VN'); // phát tiếng Việt
+    setTimeout(() => speak(nameEN, 'en-US'), 1500); // sau đó phát tiếng Anh
+	}
+	};
+	</script>
+	
+
+
+
+<!-- Phát âm thanh từ thư mục audio -->
+  <audio autoplay>
+    <source src="../audio/Pd.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát âm thanh.
+  </audio>
+</body>
+</html>

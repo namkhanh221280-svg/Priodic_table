@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Promethi(Pm)</title>
+  <style>
+    body {
+      
+	  font-family: Arial, Times New Roman, Helvetica, Verdana, Courier New, sans-serif;
+      margin: 40px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 { color: #333; }
+    .symbol {
+      font-size: 60px;
+      color: #333;
+    }
+    .info {
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    img, video {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #response {
+      background: #f0f0f0;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 5px;
+      min-height: 50px;
+    }
+/* Thêm CSS cho nút đáp án và hướng dẫn */
+  .extra-buttons 
+  {
+    margin-top: 5px;
+    display: none;
+  }
+  .extra-buttons button 
+  {
+    margin-right: 10px;
+    background-color: #28a745;
+  }
+  .extra-buttons button:hover 
+  {
+    background-color: #1e7e34;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!--<h1>Bo (B)</h1> -->
+    <div class="symbol">Pm</div>
+    <div class="info">
+	  <p><strong>Tên:</strong> Promethi</p>
+	  <p><strong>Tên tiếng Anh:</strong> Promethium</p>
+	  <p><strong>Nguồn gốc tên gọi:</strong> đặt theo tên Prometheus trong thần thoại Hy Lạp. Prometheus là người đã đánh cắp lửa từ các thần và giao nó cho con người. </p>  
+      <p>Được phát hiện năm 1945 bởi Jacob Marinsky, Lawrence Glendenin, và Charles Coryell trong lò phản ứng hạt nhân Oak Ridge (Mỹ). Không tồn tại tự nhiên với lượng đáng kể – thường được tạo ra từ phân rã của Uranium-235 hoặc từ Neodymium-147 trong lò phản ứng hạt nhân.</p>
+	  <p><strong>Số hiệu nguyên tử:</strong> 61</p>
+      <p><strong>Nguyên tử khối:</strong> [145]</p>
+      <p><strong>Loại:</strong> Kim loại chuyển tiếp </p>	  
+      <p><strong>Màu sắc:</strong>Màu Bạc sáng, ánh kim.</p> 
+	  <p><strong>Phản ứng:</strong></p>
+      <ul>
+      Bị oxy hóa nhanh trong không khí, tạo lớp oxit Pm₂O₃ màu hồng<br>
+    Phản ứng với acid loãng, giải phóng khí hydro<br>
+    Các hợp chất phổ biến ở dạng Pm³⁺, tương tự lanthanide khác<br>
+    Có tính phóng xạ, cần xử lý cẩn thận. <br>
+
+      </ul>
+      <p><strong>Ứng dụng:</strong></p>
+<p style="text-align: justify;">
+Do có tính phóng xạ yếu, chủ yếu dùng trong:<br>
+Nguồn năng lượng cho vệ tinh nhân tạo, thiết bị không cần bảo trì lâu dài<br>
+Pin hạt nhân (atomic batteries) – sử dụng đồng vị Pm-147<br>
+Thiết bị đo độ dày, phát xạ beta<br>
+Ứng dụng trong nghiên cứu khoa học chứ không phổ biến thương mại do khó thu thập và phóng xạ<br>
+Promethium là nguyên tố thuộc nhóm Lantanide với số nguyên tử 61. Đây là nguyên tố đất hiếm phóng xạ duy nhất, không tồn tại trong tự nhiên với số lượng đáng kể mà chỉ được tạo ra từ sự phân rã hạt nhân của các nguyên tố khác. Promethium chủ yếu được sử dụng trong các thiết bị phát sáng và pin hạt nhân. <br>
+Ứng dụng<br>
+1.	Nguồn phát tia beta trong pin hạt nhân (Pm-147): <br>
+o	Pin hạt nhân sử dụng Pm-147 có thể hoạt động hàng chục năm, được dùng trong tàu vũ trụ, vệ tinh và các thiết bị quân sự.<br>
+2.	Sơn dạ quang không cần ánh sáng mặt trời: <br>
+o	Pm-147 phát ra bức xạ beta, giúp sơn phát sáng mà không cần nạp năng lượng từ ánh sáng.<br>
+3.	Thiết bị đo độ dày kim loại và nhựa: <br>
+o	Các cảm biến bức xạ beta có thể đo độ dày của vật liệu trong công nghiệp.<br>
+4.	Nghiên cứu hạt nhân và vật lý nguyên tử: <br>
+o	Dùng trong các thí nghiệm vật lý hạt nhân để nghiên cứu tính chất phóng xạ.
+
+    </div>
+
+<!-- Ảnh minh họa -->
+	<img src="../images/Promethium.jpg" alt="Promethium" style="width:612px; margin-top:10px;">
+
+
+<!-- Video minh họa -->
+	<h3>Video minh hoạ: Promethium trong đời sống</h3>
+	<!-- chèn video từ thư mục Video -->
+	<!--	<video width="480" controls>
+			<source src="../videos/hydrogen.mp4" type="video/mp4">
+			Trình duyệt của bạn không hỗ trợ video.
+		</video> -->
+		
+	<div style="text-align: center; margin-top: 20px;">
+		<iframe width="560" height="315" src="https://youtube.com/embed/KFbt-eb-40g?si=2kXXk3Th36sA684C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	</div>	
+
+		
+	<br>
+	<div style="text-align: center; margin-top: 20px;">		
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/JZCdyohtrL4?si=kySRAzOJAxIGRV2M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	</div>
+
+		
+<!-- Lư ý, Video phải ở dạng cấu trúc: src="https://www.youtube.com/embed/dQw4w9WgXcQ" -->
+	<!--<video width="612" height="612" controls>
+		<source src="https://www.w3schools.com/html/mov_bbb.mp4"" type="video/mp4">
+		<source src="movie.ogg" type="video/ogg">
+		Trình duyệt của bạn không hỗ trợ thẻ video.
+	</video> -->
+	
+	<br>
+	<a href="https://vi.wikipedia.org/wiki/Promethi"><b><div>Xem thêm về Promethium </div></b></a><br>
+
+<div style="text-align: center; margin-top: 20px;">
+<h3>Mini Quiz: Kiểm tra kiến thức về Promethium </h3>
+</div>
+<div id="quiz">
+  <p><strong>Câu hỏi 1:</strong> Promethium có tính phóng xạ.</p>
+  <button onclick="checkAnswer(1, true)">Đúng</button>
+  <button onclick="checkAnswer(1, false)">Sai</button>
+  <p id="result1"></p>
+  <div class="extra-buttons" id="extra1">
+    <button onclick="showAnswer(1)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(1)">Hướng dẫn giải</button>
+  </div>
+
+  <p><strong>Câu hỏi 2:</strong> Promethium là nguyên tố tồn tại phổ biến trong tự nhiên.</p>
+  <button onclick="checkAnswer(2, false)">Đúng</button>
+  <button onclick="checkAnswer(2, true)">Sai</button>
+  <p id="result2"></p>
+  <div class="extra-buttons" id="extra2">
+    <button onclick="showAnswer(2)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(2)">Hướng dẫn giải</button>
+  </div>
+  
+  <p><strong>Câu hỏi 3:</strong> Promethium được đặt theo tên một vị thần Hy Lạp.</p>
+  <button onclick="checkAnswer(3, true)">Đúng</button>
+  <button onclick="checkAnswer(3, false)">Sai</button>
+  <p id="result3"></p>
+  <div class="extra-buttons" id="extra3">
+    <button onclick="showAnswer(3)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(3)">Hướng dẫn giải</button>
+  </div>
+  
+  <p><strong>Câu hỏi 4:</strong> Promethium được phát hiện trong tự nhiên bởi Marie Curie.</p>
+  <button onclick="checkAnswer(4, false">Đúng</button>
+  <button onclick="checkAnswer(4, true">Sai</button>
+  <p id="result4"></p>
+  <div class="extra-buttons" id="extra4">
+    <button onclick="showAnswer(4)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(4)">Hướng dẫn giải</button>
+  </div>
+  
+  <p><strong>Câu hỏi 5:</strong> Promethium được dùng làm pin hạt nhân cho vệ tinh.</p>
+  <button onclick="checkAnswer(5, true)">Đúng</button>
+  <button onclick="checkAnswer(5, false">Sai</button>
+  <p id="result5"></p>
+  <div class="extra-buttons" id="extra5">
+    <button onclick="showAnswer(5)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(5)">Hướng dẫn giải</button>
+  </div>
+  
+</div>
+<!-- Quizz -->
+	<script>
+  const answers = {
+    1: "Đúng",
+    2: "Sai",
+    3: "Đúng",
+    4: "Sai",
+    5: "Đúng"
+  };
+  const explanations = {
+    1: "Promethium là nguyên tố phóng xạ, tất cả đồng vị đều không bền.",
+    2: "Promethium không tồn tại phổ biến trong tự nhiên – cực kỳ hiếm, chỉ có vết trong quặng uranium.",
+    3: "Tên nguyên tố xuất phát từ Prometheus – vị thần Hy Lạp mang lửa cho loài người.",
+    4: "Promethium không được Marie Curie phát hiện, mà do các nhà khoa học Mỹ phát hiện vào năm 1945.",
+    5: "Promethium được dùng làm nguồn phát điện hạt nhân cho vệ tinh và thiết bị không gian."
+  };
+  function checkAnswer(questionNumber, isCorrect) {
+    const result = document.getElementById('result' + questionNumber);
+    const extra = document.getElementById('extra' + questionNumber);
+    if (isCorrect) {
+      result.textContent = '✅ Chính xác!';
+      result.style.color = 'green';
+      extra.style.display = 'none'; // Ẩn nếu trả lời đúng
+    } else {
+      result.textContent = '❌ Sai rồi.';
+      result.style.color = 'red';
+      extra.style.display = 'block'; // Hiện thêm nút khi sai
+    }
+  }
+  function showAnswer(questionNumber) {
+    alert("Đáp án đúng là: " + answers[questionNumber]);
+  }
+  function showExplanation(questionNumber) {
+    alert("Giải thích: " + explanations[questionNumber]);
+  }
+</script>
+
+
+
+
+	
+   
+
+<!-- Phát âm tiếng Việt và Anh -->
+	<script>
+	function speak(text, lang = 'vi-VN') 
+	{
+	const utterance = new SpeechSynthesisUtterance(text);
+	utterance.lang = lang;
+	speechSynthesis.speak(utterance);
+	}
+
+	window.onload = function () 
+	{
+	const params = new URLSearchParams(window.location.search);
+	const nameVI = params.get('vi'); // ví dụ: Hydro
+	const nameEN = params.get('en'); // ví dụ: Hydrogen
+	if (nameVI && nameEN) 
+	{
+    speak(nameVI, 'vi-VN'); // phát tiếng Việt
+    setTimeout(() => speak(nameEN, 'en-US'), 1500); // sau đó phát tiếng Anh
+	}
+	};
+	</script>
+	
+
+
+
+<!-- Phát âm thanh từ thư mục audio -->
+  <audio autoplay>
+    <source src="../audio/Pm.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát âm thanh.
+  </audio>
+</body>
+</html>

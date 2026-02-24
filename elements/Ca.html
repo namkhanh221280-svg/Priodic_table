@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Calci (Ca)</title>
+  <style>
+    body {
+      
+	  font-family: Arial, Times New Roman, Helvetica, Verdana, Courier New, sans-serif;
+      margin: 40px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 { color: #333; }
+    .symbol {
+      font-size: 60px;
+      color: #333;
+    }
+    .info {
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    img, video {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #response {
+      background: #f0f0f0;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 5px;
+      min-height: 50px;
+    }
+/* Thêm CSS cho nút đáp án và hướng dẫn */
+  .extra-buttons 
+  {
+    margin-top: 5px;
+    display: none;
+  }
+  .extra-buttons button 
+  {
+    margin-right: 10px;
+    background-color: #28a745;
+  }
+  .extra-buttons button:hover 
+  {
+    background-color: #1e7e34;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!--<h1>Bo (B)</h1> -->
+    <div class="symbol">Ca</div>
+    <div class="info">
+	  <p><strong>Tên:</strong> Calci</p>
+	  <p><strong>Tên tiếng Anh:</strong> Calcium</p>
+	  <p><strong>Nguồn gốc tên gọi:</strong> Xuất phát từ tiếng Latin "calx", nghĩa là vôi hoặc đá vôi, do canxi được tìm thấy nhiều trong các khoáng như CaCO₃ (canxit) và CaSO₄ (thạch cao) </p>  
+      <p><strong>Số hiệu nguyên tử:</strong> 20</p>
+      <p><strong>Nguyên tử khối:</strong> 39,098</p>
+      <p><strong>Loại:</strong> Kim loại</p>
+      <p><strong>Màu sắc:</strong> Trắng bạc, sáng ánh kim, nhưng dễ bị xỉn màu do phản ứng với không khí</p>
+      <p>Phát hiện: Năm 1808 bởi Humphry Davy, thông qua điện phân CaCl₂ nóng chảy.</p>
+	  <p><strong>Phản ứng:</strong></p>
+      <ul>
+       Canxi là kim loại hoạt động mạnh, thuộc nhóm kim loại kiềm thổ:<br>
+    Phản ứng với nước (chậm hơn natri và kali): Ca+2H2O→Ca(OH)2+H2↑   <br>
+    Phản ứng với oxi: 2Ca+O2→2CaO  <br>
+    Phản ứng với axit: Ca+2HCl→CaCl2+H2↑<br>
+	👉 Bị oxi hóa chậm trong không khí, tạo lớp CaO mỏng bảo vệ bề mặt.<br>
+      </ul>
+      <p><strong>Ứng dụng:</strong></p>
+<p style="text-align: justify;">
+	1. Trong xây dựng:<br>
+    Thành phần chính của vôi sống (CaO), vôi tôi (Ca(OH)₂), và xi măng.<br>
+    Đá vôi (CaCO₃) là vật liệu xây dựng và nguyên liệu công nghiệp.<br>
+2. Trong y tế và thực phẩm:<br>
+    Dùng làm thuốc bổ sung canxi, quan trọng cho xương và răng.<br>
+    Canxi có trong sữa, trứng, hải sản, và nhiều thực phẩm chức năng.<br>
+3. Trong luyện kim:<br>
+    Canxi kim loại dùng để khử oxi, lưu huỳnh, và carbon trong luyện kim, đặc biệt luyện thép.<br>
+4. Trong sản xuất phân bón và hóa chất:<br>
+    Dùng trong sản xuất CaCl₂, Ca(NO₃)₂.<br>
+	Tiếng Latinh calx, nghĩa là vôi. Calcium chiếm 1,5% – 2% trọng lượng cơ thể, trong đó 99% lượng calcium của cơ thể có trong xương, răng, móng và 1% còn lại nằm trong máu. 
+Hợp chất của Ca được sử dụng trong sản xuất xi măng hay vữa xây sử dụng rộng rãi trong xây dựng và trong nông nghiệp,…<br>
+Thạch cao nung CaSO4.H2O thường được dùng bó bột khi gãy xương, đúc tượng,…<br>
+Calcium đóng vai trò quan trọng trong quá trình đông máu và hỗ trợ sức khỏe tim mạch; điều chỉnh sự co cơ, và quan trọng hơn cả là giúp xương chắc khỏe.<br>
+Một số dấu hiệu dưới đây cho thấy cơ thể đang thiếu hụt calcium: Bị chuột rút, mất ngủ, da khô, óng tay yếu, giòn và dễ gãy, loãng xương, huyết áp cao.<br>
+Biểu hiện khi cơ thể dư thừa calcium dẫn đến táo bón; đau bụng, buồn nôn,…
+
+</p>
+    </div>
+
+<!-- Ảnh minh họa -->
+	<img src="../images/Calcium.jpg" alt="Calcium" style="width:612px; margin-top:10px;">
+
+
+<!-- Video minh họa -->
+	<h3>Video minh hoạ: Calcium trong đời sống</h3>
+	<!-- chèn video từ thư mục Video -->
+	<!--	<video width="480" controls>
+			<source src="../videos/hydrogen.mp4" type="video/mp4">
+			Trình duyệt của bạn không hỗ trợ video.
+		</video> -->
+		
+	<div style="text-align: center; margin-top: 20px;">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/sNrY6rCFkkg?si=MYEAqXCPIta0dzv2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	</div>	
+		
+		
+	<br>
+	<div style="text-align: center; margin-top: 20px;">		
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/ho0BTWjQDi8?si=vDedanCWV9wyIBBR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	</div>
+		
+
+		
+		
+<!-- Lư ý, Video phải ở dạng cấu trúc: src="https://www.youtube.com/embed/dQw4w9WgXcQ" -->
+	<!--<video width="612" height="612" controls>
+		<source src="https://www.w3schools.com/html/mov_bbb.mp4"" type="video/mp4">
+		<source src="movie.ogg" type="video/ogg">
+		Trình duyệt của bạn không hỗ trợ thẻ video.
+	</video> -->
+	
+	<br>
+	<a href="https://vi.wikipedia.org/wiki/Calci"><b><div>Xem thêm về Calcium</div></b></a><br>
+
+<div style="text-align: center; margin-top: 20px;">
+<h3>Mini Quiz: Kiểm tra kiến thức về Calcium</h3>
+</div>
+<div id="quiz">
+  <p><strong>Câu hỏi 1:</strong> Canxi là kim loại mềm, màu trắng bạc, dễ bị xỉn trong không khí.</p>
+  <button onclick="checkAnswer(1, true)">Đúng</button>
+  <button onclick="checkAnswer(1, false)">Sai</button>
+  <p id="result1"></p>
+  <div class="extra-buttons" id="extra1">
+    <button onclick="showAnswer(1)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(1)">Hướng dẫn giải</button>
+  </div>
+
+  <p><strong>Câu hỏi 2:</strong> Canxi không phản ứng với nước nên an toàn khi bảo quản ngoài không khí.</p>
+  <button onclick="checkAnswer(2, false)">Đúng</button>
+  <button onclick="checkAnswer(2, true)">Sai</button>
+  <p id="result2"></p>
+  <div class="extra-buttons" id="extra2">
+    <button onclick="showAnswer(2)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(2)">Hướng dẫn giải</button>
+  </div>
+  
+  <p><strong>Câu hỏi 3:</strong> Tên gọi “Calcium” bắt nguồn từ từ Latin “calx” nghĩa là đá vôi.</p>
+  <button onclick="checkAnswer(3, true)">Đúng</button>
+  <button onclick="checkAnswer(3, false)">Sai</button>
+  <p id="result3"></p>
+  <div class="extra-buttons" id="extra3">
+    <button onclick="showAnswer(3)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(3)">Hướng dẫn giải</button>
+  </div>
+  
+  <p><strong>Câu hỏi 4:</strong> Canxi được sử dụng rộng rãi trong xây dựng và y học.</p>
+  <button onclick="checkAnswer(4, true)">Đúng</button>
+  <button onclick="checkAnswer(4, false)">Sai</button>
+  <p id="result4"></p>
+  <div class="extra-buttons" id="extra4">
+    <button onclick="showAnswer(4)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(4)">Hướng dẫn giải</button>
+  </div>
+  
+  <p><strong>Câu hỏi 5:</strong> Humphry Davy phát hiện canxi bằng cách điện phân CaCO₃ nóng chảy.</p>
+  <button onclick="checkAnswer(5, false)">Đúng</button>
+  <button onclick="checkAnswer(5, true">Sai</button>
+  <p id="result5"></p>
+  <div class="extra-buttons" id="extra5">
+    <button onclick="showAnswer(5)">Xem đáp án đúng</button>
+    <button onclick="showExplanation(5)">Hướng dẫn giải</button>
+  </div>
+  
+</div>
+<!-- Quizz -->
+	<script>
+  const answers = {
+    1: "Đúng",
+    2: "Sai",
+    3: "Đúng",
+    4: "Đúng",
+    5: "Sai"
+  };
+  const explanations = {
+    1: "Canxi là kim loại trắng bạc, mềm, dễ bị xỉn do oxi hóa.",
+    2: "Canxi phản ứng chậm với nước, không thể bảo quản ngoài không khí.",
+    3: ""Calcium" bắt nguồn từ “calx” (đá vôi) trong tiếng Latin.",
+    4: "Dùng trong xây dựng (xi măng, vôi) và y học (xương, răng).",
+    5: "Canxi không được điều chế từ CaCO₃ nóng chảy, mà bằng điện phân CaCl₂ nóng chảy."
+  };
+  function checkAnswer(questionNumber, isCorrect) {
+    const result = document.getElementById('result' + questionNumber);
+    const extra = document.getElementById('extra' + questionNumber);
+    if (isCorrect) {
+      result.textContent = '✅ Chính xác!';
+      result.style.color = 'green';
+      extra.style.display = 'none'; // Ẩn nếu trả lời đúng
+    } else {
+      result.textContent = '❌ Sai rồi.';
+      result.style.color = 'red';
+      extra.style.display = 'block'; // Hiện thêm nút khi sai
+    }
+  }
+  function showAnswer(questionNumber) {
+    alert("Đáp án đúng là: " + answers[questionNumber]);
+  }
+  function showExplanation(questionNumber) {
+    alert("Giải thích: " + explanations[questionNumber]);
+  }
+</script>
+
+
+
+
+	
+    <!-- Trợ lý AI -->
+<!--    <div style="margin-top: 40px;">
+      <h2>Trợ lý học tập AI</h2>
+      <textarea id="userInput" rows="3" placeholder="Hỏi về Hydrogen hoặc kiến thức hóa học..."></textarea>
+      <button onclick="askAI()">Gửi câu hỏi</button>
+      <div id="response">Câu trả lời sẽ hiển thị tại đây.</div>
+    </div>
+  </div>
+
+  <!-- Nhúng Chatbase (thay bằng ID thật của bạn) -->
+ <!-- <script>
+    window.chatbaseConfig = {
+      chatbotId: "YOUR_CHATBOT_ID"
+    }
+  </script>
+  <script src="https://www.chatbase.co/embed.min.js" id="chatbase-script" defer></script>
+
+  <!-- Nếu muốn dùng giao diện chat tự tạo: gọi API về server riêng (nếu có) -->
+ <!-- <script>
+    async function askAI() {
+      const input = document.getElementById("userInput").value;
+      document.getElementById("response").innerText = "Đang trả lời...";
+      
+      // Giả lập phản hồi (thay đoạn này bằng fetch tới server backend nếu có)
+      setTimeout(() => {
+        document.getElementById("response").innerText = "Đây là phản hồi mẫu từ AI. Vui lòng tích hợp API backend để trả lời thật.";
+      }, 1000);
+    }
+  </script> -->
+  
+<!-- Phát âm thanh tiếng Anh-->
+<!--  <script>
+	function speak(text) {
+	const utterance = new SpeechSynthesisUtterance(text);
+	utterance.lang = 'vi-VN';
+	speechSynthesis.speak(utterance);
+	}
+
+// Lấy giá trị ?name=... từ URL
+	window.onload = function() {
+	const params = new URLSearchParams(window.location.search);
+	const name = params.get('name');
+	if (name) {
+    speak(name);
+	}
+	};
+	</script> -->
+
+<!-- Phát âm tiếng Việt và Anh -->
+	<script>
+	function speak(text, lang = 'vi-VN') 
+	{
+	const utterance = new SpeechSynthesisUtterance(text);
+	utterance.lang = lang;
+	speechSynthesis.speak(utterance);
+	}
+
+	window.onload = function () 
+	{
+	const params = new URLSearchParams(window.location.search);
+	const nameVI = params.get('vi'); // ví dụ: Hydro
+	const nameEN = params.get('en'); // ví dụ: Hydrogen
+	if (nameVI && nameEN) 
+	{
+    speak(nameVI, 'vi-VN'); // phát tiếng Việt
+    setTimeout(() => speak(nameEN, 'en-US'), 1500); // sau đó phát tiếng Anh
+	}
+	};
+	</script>
+	
+<!-- Phát âm thanh từ thư mục audio -->
+  <audio autoplay>
+    <source src="../audio/Ca.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát âm thanh.
+  </audio>
+</body>
+</html>
