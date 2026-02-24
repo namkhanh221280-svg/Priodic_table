@@ -1,0 +1,2400 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bảng Tuần Hoàn Hoá Học</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0ff;
+    }
+    h1 
+	{
+      text-align: center;
+    }
+    .periodic-table 
+	{
+      display: grid;
+      grid-template-columns: repeat(18, 60px);
+      gap: 2px;
+      width: max-content;
+      margin: auto;
+    }
+    .element 
+	{
+      border: 1px solid #000;
+      background-color: #fff;
+      width: 60px;
+      height: 65px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: -1px;
+      box-sizing: border-box;
+      position: relative;
+      font-size: 11px;
+      text-align: center;
+      color: #000;
+      text-decoration: none;
+    }
+    .element div:nth-child(1) 
+	{
+      position: absolute;
+      top: 2px;
+      left: 4px;
+      font-size: 10px;
+    }
+    .element div:nth-child(2) 
+	{
+      position: absolute;
+      top: 15px;
+      right: 4px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .element div:nth-child(3) 
+	{
+      margin-top: 40px;
+      font-size: 10px;
+    }
+    .element div:nth-child(4) 
+	{
+      font-size: 10px;
+      color: #333;
+    }
+/* Phân loại màu */
+	.hydro { background-color: #f7f7f7; }
+    .phi-kim { background-color: #f4b7b2; }
+    .kim-loai-kiem { background-color: #f4a261; }
+    .kim-loai-kiem-tho { background-color: #e5989b; }
+    .kim-loai { background-color: #b5ead7; }
+    .ban-kim { background-color: #b5ead7; }
+    .kim-loai-chuyen-tiep { background-color: #d5b772; }
+    .khi-hiem { background-color: #f9dc5c; }
+    .lanthanoid, .actinoid 
+	{
+      grid-column: span 10;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }	
+/* Hover hiệu ứng */
+    .element:hover 
+	{
+      transform: scale(1.1);
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	  border: 2px solid red;
+    }
+	
+/* Tooltip */
+/* Tooltip dùng chung */
+    .tooltip-fixed 
+	{
+      visibility: hidden;
+      background-color: #039;
+      color: #fff;
+      text-align: left;
+      padding: 6px;
+      border-radius: 5px;
+      position: fixed; /* Cố định vị trí */
+      top: 70px;
+      left: 450px;
+      z-index: 100;
+      width: 250px;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+    .tooltip-fixed.active 
+	{
+      visibility: visible;
+    }
+
+/* Giữ nguyên CSS tooltip gốc (ẩn đi) */
+    .tooltip 
+	{
+      display: none;
+    }	
+	.element:hover .tooltip 
+	{
+      visibility: visible;
+    }
+	
+/* Viết các nhóm nguyên tố */
+	.group-label 
+	{
+	position: absolute;
+	top: 50px;
+	left: 0;
+	font-size: 10px;
+	font-weight: bold;
+	color: #000;
+	}	
+	body 
+	{
+      position: relative;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }	
+/*Nút nhấn link Qiuzzz */
+	.link-button 
+	{
+      position: absolute; /* Cho phép định vị */
+      top: 540px;  /* Thay đổi giá trị này để chỉnh vị trí */
+      left: 20px;
+      padding: 12px 24px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, background-color 0.3s;	  
+	  width: 100%;
+	  max-width: 200px;  /* hoặc đặt số pixel cụ thể bạn muốn */
+	  display: block;
+	  margin: 10px auto;	
+	  border: none;
+	  border-radius: 10px;
+	  text-align: center;
+	  white-space: nowrap;	  
+    }
+    .link-button:hover 
+	{
+      transform: scale(1.1);
+      background-color: #2980b9;
+    }
+	.link-button1 
+	{
+      position: absolute; /* Cho phép định vị */
+      top: 590px;  /* Thay đổi giá trị này để chỉnh vị trí */
+      left: 20px;
+      padding: 12px 24px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, background-color 0.3s;	  
+	  width: 100%;
+	  max-width: 200px;  /* hoặc đặt số pixel cụ thể bạn muốn */
+	  display: block;
+	  margin: 10px auto;	
+	  border: none;
+	  border-radius: 10px;
+	  text-align: center;
+	  white-space: nowrap;	  
+    }
+	.link-button1:hover 
+	{
+      transform: scale(1.1);
+      background-color: #2980b9;
+    }
+	
+/* Mở chatGPT */
+	.link-button_chatGPT 
+	{
+      position: absolute; /* Cho phép định vị */
+      top: 640px;  /* Thay đổi giá trị này để chỉnh vị trí */
+      left: 20px;
+      padding: 12px 24px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, background-color 0.3s;	  
+	  width: 100%;
+	  max-width: 200px;  /* hoặc đặt số pixel cụ thể bạn muốn */
+	  display: block;
+	  margin: 10px auto;	
+	  border: none;
+	  border-radius: 10px;
+	  text-align: center;
+	  white-space: nowrap;
+    }
+	.link-button_chatGPT:hover 
+	{
+      transform: scale(1.1);
+      background-color: #2980b9;
+    }
+/* Hover hiệu ứng */
+    .element.active-hover 
+	{
+      transform: scale(1.1);
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      border: 2px solid red;
+    }
+/* Ô phân loại có thể nhấn */
+    .category-box 
+	{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .category-box.active 
+	{
+      outline: 3px solid #333;
+      font-weight: bold;
+    }
+
+/* Ô phân loại có thể nhấn */
+    .category-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .category-box.active {
+      outline: 3px solid #333;
+      font-weight: bold;
+    }
+
+    /* Khung tìm kiếm */
+    .search-box 
+	{
+	position: absolute;
+	top: -10px;     
+	left: 10px;    
+	display: none;
+	z-index: 2;
+	}
+    .search-box input {
+      padding: 8px;
+      font-size: 14px;
+      width: 200px;
+    }
+
+    /* Nút hiện/ẩn có thể điều chỉnh vị trí */
+    .toggle-btn {
+      position: absolute; 
+      top: 28px;
+      left: 40px; 
+      z-index: 999;
+      padding: 8px 12px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .toggle-btn:hover {
+      background-color: #1565c0;
+    }
+	/*.toggle-btn
+	{
+	font-size: 45px;
+	padding: 8px;
+	} */
+	
+	.toggle-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 14px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ddd;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+}
+
+body.dark .toggle-button {
+  background-color: #333;
+  color: #fff;
+}
+
+  body.dark-mode {
+      background-color: #222;
+      color: #f9f9f9;
+    }
+
+    .menu-toggle,
+    .menu-icons {
+      position: fixed;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      bottom: 20px;
+      background-color: #333;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-icons {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+
+  /* Ẩn mặc định và tạo hiệu ứng */
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Khi menu hiển thị (thêm class "active") */
+.menu-icons.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu-icon {
+  background-color: #333;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;         /* GIỮ VÒNG TRÒN */
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+    /* --- SO SÁNH NGUYÊN TỐ --- */
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .comparison {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    select {
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    table {
+      width: 90%;
+      max-width: 900px;
+      border-collapse: collapse;
+      margin: auto;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode table {
+      background-color: #333;
+      color: white;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #444;
+      color: #fff;
+    }
+
+    body.dark-mode th {
+      background-color: #111;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    body.dark-mode tr:nth-child(even) {
+      background-color: #2a2a2a;
+    }
+
+
+	<!-- <div class="symbol" onclick="playSound('Ac')">H</div> -->
+	
+  </style>
+</head>
+<body>
+<span style="color: red;"><h1>BẢNG TUẦN HOÀN CÁC NGUYÊN TỐ HOÁ HỌC</h1></span>
+
+<div class="search-box" id="searchBox">
+    <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên, ký hiệu, số hiệu..." onkeyup="searchElements()">
+  </div>
+<button class="toggle-btn" onclick="toggleSearchBox()">🔍</button>
+
+
+
+<!-- MENU ICONS -->
+<div class="menu-icons" id="menuIcons">
+  <div class="menu-icon" title="Quay lại" onclick="closeMenu()">↩️</div>
+  <div class="menu-icon" title="Dark mode" onclick="toggleDarkMode()">🌙</div>
+  <div class="menu-icon" title="So sánh" onclick="window.location.href='elements/menu.html'">⚖️</div>
+ <div class="menu-icon" title="Trang chủ" onclick="window.location.href='Priodic_table_03_v1.html'">🏠</div>
+</div>
+
+  
+
+
+
+<div class="periodic-table">
+	<!-- Hydrogen -->
+    <a href="elements/h.html" class="element hydro "
+		onmouseover="showTooltip('Hydro', 'Hydrogen', 'Từ tiếng Hy Lạp: &quot;Hydro&quot; (nước) &quot;genes&quot; (tạo ra)');"
+		onmouseout="hideTooltip()">
+		<!--onclick="speakAndNavigate(event, 'Hydrogen', this.href)"> -->		
+		<div>1</div>
+		<div>H</div>
+		<div>Hydrogen</div>
+		<div>1,008</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Hydro<br>
+				<strong>Tên tiếng Anh:</strong> Hydrogen<br>
+				<strong>Nguồn gốc:</strong> Từ tiếng Hy Lạp :"Hydro" (nước) "genes" (tạo ra)
+			</div>
+	</a>
+    <div style="grid-column: span 16"></div>
+	<!-- Helium -->
+    <a href="elements/he.html" class="element khi-hiem"
+		onmouseover="showTooltip('Heli', 'Helium', 'Từ tiếng Hy Lạp &quot;helios&quot; (Mặt Trời), được phát hiện từ phổ ánh sáng Mặt Trời');"
+		onmouseout="hideTooltip()">
+		<!--onclick="speakAndNavigate(event, 'Helium', this.href)">-->
+		<div>2</div>
+		<div>He</div>
+		<div>Helium</div>
+		<div>4,0026</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Heli<br>
+				<strong>Tên tiếng Anh:</strong> Helium<br>
+				<strong>Nguồn gốc:</strong> Từ tiếng Hy Lạp "helios" (Mặt Trời), được phát hiện từ phổ ánh sáng Mặt Trời
+			</div>
+	</a>
+	<!-- Lithium -->
+    <a href="elements/Li.html" class="element kim-loai"
+		onmouseover="showTooltip('Lithi', 'Lithium', 'Tiếng Hy Lạp &quot;lithos&quot;, nghĩa là &quot;đá&quot;')"
+		onmouseout="hideTooltip()">
+		<div>3</div>
+		<div>Li</div>
+		<div>Lithium</div>
+		<div>6,94</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Lithi<br>
+				<strong>Tên tiếng Anh:</strong> Lithium<br>
+				<strong>Nguồn gốc:</strong> tiếng Hy Lạp lithos, nghĩa là "đá"
+			</div>
+	</a>
+	<!-- Beryllium -->
+    <a href="elements/Be.html" class="element kim-loai"
+		onmouseover="showTooltip('Beryli', 'Beryllium', 'Tiếng Hy Lạp &quot; beryllos (βήρυλλος)&quot;, nghĩa là &quot;một loại khoáng chất màu xanh lục, tức beryl (ngọc lục bảo)&quot;')"
+		onmouseout="hideTooltip()">
+		<div>4</div>
+		<div>Be</div>
+		<div>Beryllium</div>
+		<div>9,012</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Beryli<br>
+				<strong>Tên tiếng Anh:</strong> Beryllium<br>
+				<strong>Nguồn gốc:</strong> tiếng Hy Lạp "beryllos" (βήρυλλος), có nghĩa là một loại khoáng chất màu xanh lục, tức beryl (ngọc lục bảo), trong đó có chứa beryllium
+			</div>	
+	</a>
+    <div style="grid-column: span 10"></div>
+	<!-- Boron -->
+    <a href="elements/B.html" class="element phi-kim"
+		onmouseover="showTooltip('Bo', 'Boron', 'Tiếng Ả rập &quot;, nghĩa là &quot;buraq - tên của hợp chất borac;')"
+		onmouseout="hideTooltip()">
+		<div>5</div>
+		<div>B</div>
+		<div>Boron</div>
+		<div>10,81</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Bo<br>
+				<strong>Tên tiếng Anh:</strong> Boron<br>
+				<strong>Nguồn gốc:</strong> tiếng tiếng Ả Rập buraq - tên của hợp chất borac
+			</div>	
+	</a>
+	<!-- Cacbon -->
+    <a href="elements/C.html" class="element phi-kim"
+		onmouseover="showTooltip('Cacbon', 'Cacbon', 'Tiếng Latinh&quot; carbo, nghĩa là &quot;'than';')"
+		onmouseout="hideTooltip()">
+		<div>6</div>
+		<div>C</div>
+		<div>Carbon</div>
+		<div>12,011</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Bo<br>
+				<strong>Tên tiếng Anh:</strong> Boron<br>
+				<strong>Nguồn gốc:</strong> tiếng Latinh carbo, nghĩa là "than"
+			</div>
+	</a>
+    
+	<a href="elements/N.html" class="element phi-kim"
+		onmouseover="showTooltip('Nitơ', 'Nitrogen', 'tiếng Hy Lạp &quot;nitron&quot;, như vậy &quot;nitrogen nghĩa là chất tạo ra nitrat&quot;')"
+		onmouseout="hideTooltip()">
+		<div>7</div>
+		<div>N</div>
+		<div>Nitrogen</div>
+		<div>14,007</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Nitơ<br>
+				<strong>Tên tiếng Anh:</strong> Nitrogen<br>
+				<strong>Nguồn gốc:</strong> tiếng Hy Lạp nitron. Như vậy, "nitrogen" nghĩa là "chất tạo ra nitrat".
+			</div>	
+	</a>
+	<!-- Oxygen -->
+    <a href="elements/O.html" class="element phi-kim"
+		onmouseover="showTooltip('Oxi', 'Oxygen', 'tiếng Hy Lạp &quot; oxy, nghĩa là sinh ra acid. Tên oxygen bắt nguồn từ tiếng Hy Lạp oxys (nghĩa là chua) và genes (nghĩa là tạo ra)')"
+		onmouseout="hideTooltip()">
+		<div>8</div>
+		<div>O</div>
+		<div>Oxygen</div>
+		<div>15,999</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Oxi<br>
+				<strong>Tên tiếng Anh:</strong> Oxygen<br>
+				<strong>Nguồn gốc:</strong> tiếng Hy Lạp oxy, nghĩa là sinh ra acid. Tên "oxygen" bắt nguồn từ tiếng Hy Lạp "oxys" (nghĩa là "chua") và "genes" (nghĩa là "tạo ra")".
+			</div>	
+	</a>
+	<!--  Fluorine -->
+    <a href="elements/F.html" class="element phi-kim"
+		onmouseover="showTooltip('Fluor', 'Fluorine', 'tiếng Latinh &quot;fluere, nghĩa là &quot;Chảy&quot;. Xuất phát từ khoáng vật fluorit (CaF₂), được dùng từ thời xưa để giúp quặng chảy dễ dàng trong luyện kim ')"
+		onmouseout="hideTooltip()">
+		<div>9</div>
+		<div>F</div>
+		<div>Fluorine</div>
+		<div>18,998</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Fluor<br>
+				<strong>Tên tiếng Anh:</strong> Fluorine<br>
+				<strong>Nguồn gốc:</strong> tiếng Latinh fluere, nghĩa là "chảy".
+			</div>
+	</a>
+	<!-- Neon -->
+    <a href="elements/Ne.html" class="element khi-hiem"
+		onmouseover="showTooltip('Neon', 'Neon', 'tiếng Hy Lạp &quot;Neon, nghĩa là &quot;mới&quot;. Tên gọi này phản ánh việc neon là một nguyên tố mới được phát hiện vào thời điểm đó.')"
+		onmouseout="hideTooltip()">
+		<div>10</div>
+		<div>Ne</div>
+		<div>Neon</div>
+		<div>20,18</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Neon<br>
+				<strong>Tên tiếng Anh:</strong> Neon<br>
+				<strong>Nguồn gốc:</strong> tiếng Hy Lạp neos, nghĩa là "mới".
+			</div>
+	</a>
+	<!-- Natri -->
+	<a href="elements/Na.html" class="element kim-loai"
+		onmouseover="showTooltip('Natri', 'Sodium', 'tiếng Latinh &quot;natrium, Tên sodium bắt nguồn từ tiếng Latin soda (thuật ngữ dùng để chỉ các hợp chất natri như soda hoặc natron)...')"
+		onmouseout="hideTooltip()">
+		<div>11</div>
+		<div>Na</div>
+		<div>Sodium</div>
+		<div>22,990</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Natri<br>
+				<strong>Tên tiếng Anh:</strong> Sodium<br>
+				<strong>Nguồn gốc:</strong> tiếng Latinh natrium, Tên "sodium" bắt nguồn từ tiếng Latin "soda" (thuật ngữ dùng để chỉ các hợp chất natri như soda hoặc natron)..
+			</div>
+	</a>
+	<!-- Magnesium -->
+	<a href="elements/Mg.html" class="element kim-loai"
+		onmouseover="showTooltip('Magnesi', ' Magnesium', 'đặt theo tên quận Magnesia ở Đông Thessalía, Hy Lạp. nơi magiê và các khoáng chất liên quan được tìm thấy từ thời cổ đại.')"
+		onmouseout="hideTooltip()">
+		<div>12</div>
+		<div>Mg</div>
+		<div>Magnesium</div>
+		<div>24,305</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Magnesi<br>
+				<strong>Tên tiếng Anh:</strong> Magnesium<br>
+				<strong>Nguồn gốc:</strong> đặt theo tên quận Magnesia ở Đông Thessalía, Hy Lạp. nơi magiê và các khoáng chất liên quan được tìm thấy từ thời cổ đại.
+			</div>
+	</a>
+	<div style="grid-column: span 10"></div>
+	<!-- Nhôm -->
+	<a href="elements/Al.html" class="element kim-loai"
+		onmouseover="showTooltip('Nhôm', ' Aluminum', 'aluminium là tên tiếng Latinh của phèn; alumen nghĩa là muối đắng. một loại muối chứa nhôm được biết đến từ thời cổ đại.')"
+		onmouseout="hideTooltip()">
+		<div>13</div>
+		<div>Al</div>
+		<div>Aluminium</div>
+		<div>26,982</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Nhôm<br>
+				<strong>Tên tiếng Anh:</strong> Aluminum<br>
+				<strong>Nguồn gốc:</strong> aluminium là tên tiếng Latinh của phèn; alumen nghĩa là "muối đắng". một loại muối chứa nhôm được biết đến từ thời cổ đại.
+			</div>
+	</a>
+	<!-- Silicon -->
+	<a href="elements/Si.html" class="element phi-kim"
+		onmouseover="showTooltip('Silic', ' Silicon', 'Tên Silicon xuất phát từ tiếng Latin silex hoặc silicis, nghĩa là đá lửa (flint), phản ánh sự phong phú của silic trong khoáng vật thiên nhiên.')"
+		onmouseout="hideTooltip()">
+		<div>14</div>
+		<div>Si</div>
+		<div>Slicon</div>
+		<div>28,085</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Silic<br>
+				<strong>Tên tiếng Anh:</strong> Silicon<br>
+				<strong>Nguồn gốc:</strong> Tên "Silicon" xuất phát từ tiếng Latin "silex" hoặc "silicis", nghĩa là đá lửa (flint), phản ánh sự phong phú của silic trong khoáng vật thiên nhiên.
+			</div>
+	</a>
+	<!-- Phosphorus -->
+	<a href="elements/P.html" class="element phi-kim"
+		onmouseover="showTooltip('Phosphor', ' Phosphorus', 'Từ tiếng Hy Lạp cổ “phōsphóros”, nghĩa là “người mang ánh sáng” (φως = ánh sáng, φέρω = mang theo).')"
+		onmouseout="hideTooltip()">
+		<div>15</div>
+		<div>P</div>
+		<div>Phosphorus</div>
+		<div>18,998</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Phosphor<br>
+				<strong>Tên tiếng Anh:</strong> Phosphorus<br>
+				<strong>Nguồn gốc:</strong> Từ tiếng Hy Lạp cổ “phōsphóros”, nghĩa là “người mang ánh sáng” (φως = ánh sáng, φέρω = mang theo)
+			</div>
+	</a>
+	<!-- Lưu huỳnh -->
+	<a href="elements/S.html" class="element phi-kim"
+		onmouseover="showTooltip('Lưu huỳnh', ' Sulfur', 'danh từ sulfur bắt nguồn từ tiếng Phạn sulvere hoặc tiếng Latinh sulfurium; cả hai đều có nghĩa là lưu huỳnh. có nghĩa là lửa cháy (vì nó dễ cháy, tạo ra ngọn lửa xanh và khói SO₂')"
+		onmouseout="hideTooltip()">
+		<div>16</div>
+		<div>S</div>
+		<div>Sulfur</div>
+		<div>32,06</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Lưu huỳnh<br>
+				<strong>Tên tiếng Anh:</strong> Sulfur<br>
+				<strong>Nguồn gốc:</strong> danh từ sulfur bắt nguồn từ tiếng Phạn sulvere hoặc tiếng Latinh sulfurium; cả hai đều có nghĩa là "lưu huỳnh". có nghĩa là lửa cháy (vì nó dễ cháy, tạo ra ngọn lửa xanh và khói SO₂)
+			</div>
+	</a>
+	<!--Chlorine -->
+	<a href="elements/Cl.html" class="element phi-kim"
+		onmouseover="showTooltip('Chlor', ' Chlorine', 'tiếng Hy Lạp chloros, nghĩa là vàng lục')"
+		onmouseout="hideTooltip()">
+		<div>17</div>
+		<div>Cl</div>
+		<div>Chlorine</div>
+		<div>34,45</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Chlor<br>
+				<strong>Tên tiếng Anh:</strong> Chloriner<br>
+				<strong>Nguồn gốc:</strong> tiếng Hy Lạp chloros, nghĩa là "vàng lục")
+			</div>
+	</a>
+	<!-- Argon -->
+	<a href="elements/Ar.html" class="element khi-hiem"
+		onmouseover="showTooltip('Argon', ' Argon', 'xuất phát từ tiếng Hy Lạp &quot;argos&quot; nghĩa là lười biếng hoặc không hoạt động, ám chỉ tính trơ về mặt hóa học của nó.')"
+		onmouseout="hideTooltip()">
+		<div>18</div>
+		<div>Ar</div>
+		<div>Argon</div>
+		<div>39,95</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Argon<br>
+				<strong>Tên tiếng Anh:</strong> Argon<br>
+				<strong>Nguồn gốc:</strong> Tên "argon" xuất phát từ tiếng Hy Lạp “argos” nghĩa là lười biếng hoặc không hoạt động, ám chỉ tính trơ về mặt hóa học của nó.)
+			</div>
+	</a>
+	<!-- Potassium -->
+	<div style="grid-column: span 18"></div>
+	<a href="elements/K.html" class="element kim-loai"
+		onmouseover="showTooltip('Kali', ' Potassium', 'Ký hiệu K xuất phát từ tiếng Latin “kalium” (nghĩa là kiềm).')"
+		onmouseout="hideTooltip()">
+		<div>19</div>
+		<div>K</div>
+		<div>Potassium</div>
+		<div>39,098</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Kali<br>
+				<strong>Tên tiếng Anh:</strong> Potassium<br>
+				<strong>Nguồn gốc:</strong> Ký hiệu K xuất phát từ tiếng Latin “kalium” (nghĩa là kiềm)
+			</div>
+	</a>
+	<!-- Calcium -->
+	<a href="elements/Ca.html" class="element kim-loai"
+		onmouseover="showTooltip('Calci', ' Calcium', 'Xuất phát từ tiếng Latin &quot;calx&quot;, nghĩa là vôi hoặc đá vôi, do canxi được tìm thấy nhiều trong các khoáng như CaCO₃ (canxit) và CaSO₄ (thạch cao).')"
+		onmouseout="hideTooltip()">
+		<div>20</div>
+		<div>Ca</div>
+		<div>Calcium</div>
+		<div>39,098</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Calci<br>
+				<strong>Tên tiếng Anh:</strong> Calcium<br>
+				<strong>Nguồn gốc:</strong> Xuất phát từ tiếng Latin "calx", nghĩa là vôi hoặc đá vôi, do canxi được tìm thấy nhiều trong các khoáng như CaCO₃ (canxit) và CaSO₄ (thạch cao)
+			</div>
+	</a>
+	<!-- Scandium -->
+	<a href="elements/Sc.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Scandi', ' Scandium', 'đặt theo địa danh Scandinavia (tên tiếng Latinh là Scandia) nơi nguyên tố này được phát hiện.')"
+		onmouseout="hideTooltip()">
+		<div>21</div>
+		<div>Sc</div>
+		<div>Scandium</div>
+		<div>26,982</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Scandi<br>
+				<strong>Tên tiếng Anh:</strong> Scandium<br>
+				<strong>Nguồn gốc:</strong> đặt theo địa danh Scandinavia (tên tiếng Latinh là Scandia) nơi nguyên tố này được phát hiện.
+			</div>
+	</a>
+	<!-- Titanium -->
+	<a href="elements/Ti.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Titani', ' Titanium', 'bắt nguồn từ các Titan trong thần thoại Hy Lạp – những vị thần khổng lồ, tượng trưng cho sức mạnh')"
+		onmouseout="hideTooltip()">
+		<div>22</div>
+		<div>Ti</div>
+		<div>Titanium</div>
+		<div>47,867</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Titani<br>
+				<strong>Tên tiếng Anh:</strong> Titanium<br>
+				<strong>Nguồn gốc:</strong> Tên "Titanium" bắt nguồn từ các Titan trong thần thoại Hy Lạp – những vị thần khổng lồ, tượng trưng cho sức mạnh
+			</div>
+	</a>
+	<!-- Vanadium-->
+	<a href="elements/V.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Vanadi', ' Vanadium', 'bắt nguồn từ “Vanadis”, tên gọi khác của nữ thần sắc đẹp Freyja trong thần thoại Bắc Âu. biểu tượng của sắc đẹp, vì các hợp chất của Vanadium có màu rực rỡ.')"
+		onmouseout="hideTooltip()">
+		<div>23</div>
+		<div>V</div>
+		<div>Vanadium</div>
+		<div>50,942</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Vanadi<br>
+				<strong>Tên tiếng Anh:</strong> Vanadium<br>
+				<strong>Nguồn gốc:</strong> Tên "Vanadium" bắt nguồn từ “Vanadis”, tên gọi khác của nữ thần sắc đẹp Freyja trong thần thoại Bắc Âu. biểu tượng của sắc đẹp, vì các hợp chất của Vanadium có màu rực rỡ.
+			</div>
+	</a>
+	
+	<a href="elements/Cr.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Chromi', ' Chromium', 'xuất phát từ tiếng Hy Lạp &quot;chroma&quot; (χρῶμα) nghĩa là màu sắc, vì nhiều hợp chất của nó có màu rực rỡ.')"
+		onmouseout="hideTooltip()">
+		<div>24</div>
+		<div>Cr</div>
+		<div>Chromium</div>
+		<div>51,996</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Chromi<br>
+				<strong>Tên tiếng Anh:</strong> Chromium<br>
+				<strong>Nguồn gốc:</strong> Tên “Chromium” xuất phát từ tiếng Hy Lạp "chroma" (χρῶμα) nghĩa là màu sắc, vì nhiều hợp chất của nó có màu rực rỡ.
+			</div>
+	</a>
+	<!-- Manganese -->
+	<a href="elements/Mn.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Mangan', ' Manganese', 'tiếng Latinh magnes (nghĩa là nam châm), hoặc từ magnesia nigra (oxide magiê đen).bắt nguồn từ khoáng chất magnesia nigra (một loại oxit mangan).')"
+		onmouseout="hideTooltip()">
+		<div>25</div>
+		<div>Mn</div>
+		<div>Manganese</div>
+		<div>54,938</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Mangan<br>
+				<strong>Tên tiếng Anh:</strong> Manganese<br>
+				<strong>Nguồn gốc:</strong> hoặc là từ tiếng Latinh magnes (nghĩa là "nam châm"), hoặc từ magnesia nigra ("oxide magiê đen"). Tên gọi “Manganese” bắt nguồn từ khoáng chất magnesia nigra (một loại oxit mangan).
+			</div>
+	</a>
+	<!-- Sắt -->
+	<a href="elements/Fe.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Sắt', ' Iron', 'bắt nguồn từ tiếng Anh cổ iren và tiếng Latin ferrum, do đó có ký hiệu hóa học là Fe.')"
+		onmouseout="hideTooltip()">
+		<div>26</div>
+		<div>Fe</div>
+		<div>Iron</div>
+		<div>55,845</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Sắt<br>
+				<strong>Tên tiếng Anh:</strong> Iron<br>
+				<strong>Nguồn gốc:</strong> Tên gọi "Iron" bắt nguồn từ tiếng Anh cổ iren và tiếng Latin ferrum, do đó có ký hiệu hóa học là Fe.).
+			</div>
+	</a>
+	<!-- Cobalt -->
+	<a href="elements/Co.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Cobalt', ' Cobalt', 'bắt nguồn từ từ tiếng Đức &quot;Kobold&quot; – nghĩa là (yêu tinh) hay (quỷ nhỏ), do thợ mỏ thời xưa cho rằng quặng chứa cobalt gây hại (do lẫn asen) và không chứa kim loại quý như họ tưởng.')"
+		onmouseout="hideTooltip()">
+		<div>27</div>
+		<div>Co</div>
+		<div>Cobalt</div>
+		<div>58,933</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Cobalt<br>
+				<strong>Tên tiếng Anh:</strong> Cobalt<br>
+				<strong>Nguồn gốc:</strong> Tên "Cobalt" bắt nguồn từ từ tiếng Đức "Kobold" – nghĩa là "yêu tinh" hay "quỷ nhỏ", do thợ mỏ thời xưa cho rằng quặng chứa cobalt gây hại (do lẫn asen) và không chứa kim loại quý như họ tưởng.).
+			</div>
+	</a>
+	<!-- Nickel -->
+	<a href="elements/Ni.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Nickel', ' Nickel', 'tiếng Đức &quot;kupfernickel&quot; – nghĩa là (kim loại đồng của quỷ) hoặc (kim loại đồng của thánh Nicôla). do thợ mỏ nghĩ rằng loại quặng này trông giống quặng đồng nhưng không chứa được đồng.')"
+		onmouseout="hideTooltip()">
+		<div>28</div>
+		<div>Ni</div>
+		<div>Nickel</div>
+		<div>58,693</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Nickel<br>
+				<strong>Tên tiếng Anh:</strong> Nickel<br>
+				<strong>Nguồn gốc:</strong> tiếng Đức kupfernickel, nghĩa là "kim loại đồng của quỷ" hoặc "kim loại đồng của thánh Nicôla". do thợ mỏ nghĩ rằng loại quặng này trông giống quặng đồng nhưng không chứa được đồng.).
+			</div>
+	</a>
+	<!-- Copper  -->
+	<a href="elements/Cu.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Đồng', ' Copper ', 'xuất phát từ tiếng Latin &quot;cuprum&quot; – liên quan đến (Cyprium) – nghĩa là kim loại từ đảo Cyprus, nơi người La Mã cổ khai thác đồng.')"
+		onmouseout="hideTooltip()">
+		<div>29</div>
+		<div>Cu</div>
+		<div>Copper</div>
+		<div>63,546</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Đồng<br>Copper <br>
+				<strong>Nguồn gốc:</strong> Tên “Copper” xuất phát từ tiếng Latin “cuprum”, liên quan đến “Cyprium” – nghĩa là “kim loại từ đảo Cyprus”, nơi người La Mã cổ khai thác đồng.
+			</div>
+	</a>
+	<!-- Zinc-->
+	<a href="elements/Zn.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Kẽm', ' Zinc ', 'ký hiệu Zn ứng với từ tiếng Đức &quot;zinc&quot; – từ này bắt nguồn từ tiếng Ba Tư là sing, nghĩa là (đá).')"
+		onmouseout="hideTooltip()">
+		<div>30</div>
+		<div>Zn</div>
+		<div>Zinic</div>
+		<div>65,38</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Kẽm<br>
+				<strong>Tên tiếng Anh:</strong> Zinc<br>
+				<strong>Nguồn gốc:</strong> ký hiệu Zn ứng với từ tiếng Đức zinc; từ này bắt nguồn từ tiếng Ba Tư là sing, nghĩa là "đá".
+			</div>
+	</a>
+	<!-- Gallium -->
+	<a href="elements/Ga.html" class="element kim-loai"
+		onmouseover="showTooltip('Gali', ' Gallium ', 'bắt nguồn từ tiếng Latin &quot;Gallia&quot; – là tên cổ của nước Pháp.')"
+		onmouseout="hideTooltip()">
+		<div>31</div>
+		<div>Ga</div>
+		<div>Gallium</div>
+		<div>69,723</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Gali<br>
+				<strong>Tên tiếng Anh:</strong> Gallium<br>
+				<strong>Nguồn gốc:</strong> Tên "Gallium" bắt nguồn từ tiếng Latin “Gallia”, là tên cổ của nước Pháp.
+			</div>
+	</a>
+	<!-- Germanium -->
+	<a href="elements/Ge.html" class="element kim-loai"
+		onmouseover="showTooltip('Germani', ' Germanium ', 'tiếng Latin Germania &quot;Đức&quot; – Ông đặt tên nguyên tố là Germanium để vinh danh quê hương mình – Germany (Đức).')"
+		onmouseout="hideTooltip()">
+		<div>32</div>
+		<div>Ge</div>
+		<div>Germanium</div>
+		<div>72,63</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Germani<br>
+				<strong>Tên tiếng Anh:</strong> Germanium<br>
+				<strong>Nguồn gốc:</strong> tiếng Latinh Germania, nghĩa là "Đức". Ông đặt tên nguyên tố là Germanium để vinh danh quê hương mình – Germany (Đức).
+			</div>
+	</a>
+	<!-- Arsenic -->
+	<a href="elements/As.html" class="element phi-kim"
+		onmouseover="showTooltip('Arsen', ' Arsenic ', 'bắt nguồn từ tiếng Hy Lạp cổ &quot;arsenikon&quot; – nghĩa là (orpiment nhuộm vàng),  được dùng để chỉ các khoáng chất có chứa asen như orpiment (As₂S₃).')"
+		onmouseout="hideTooltip()">
+		<div>33</div>
+		<div>As</div>
+		<div>Arsenic</div>
+		<div>74,92</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Arsen<br>
+				<strong>Tên tiếng Anh:</strong> Arsenic<br>
+				<strong>Nguồn gốc:</strong> Tên gọi "Arsenic" bắt nguồn từ tiếng Hy Lạp cổ "arsenikon" nghĩa là "orpiment nhuộm vàng",  được dùng để chỉ các khoáng chất có chứa asen như orpiment (As₂S₃).
+			</div>
+	</a>
+	<!-- Selenium -->
+	<a href="elements/Se.html" class="element phi-kim"
+		onmouseover="showTooltip('Seleni', ' Selenium ', 'bắt nguồn từ tiếng Hy Lạp &quot;selene&quot; – nghĩa là mặt trăng, để đi đôi với nguyên tố Tellurium (nguồn gốc tên là (Terra) – đất)')"
+		onmouseout="hideTooltip()">
+		<div>34</div>
+		<div>Se</div>
+		<div>Selenium</div>
+		<div>78,97</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Seleni<br>
+				<strong>Tên tiếng Anh:</strong> Selenium<br>
+				<strong>Nguồn gốc:</strong> Tên "Selenium" bắt nguồn từ tiếng Hy Lạp "selene", nghĩa là mặt trăng, để đi đôi với nguyên tố Tellurium (nguồn gốc tên là "Terra" – đất).
+			</div>
+	</a>
+	<!-- Bromine -->
+	<a href="elements/Br.html" class="element phi-kim"
+		onmouseover="showTooltip('Brom', ' Bromine', 'bắt nguồn từ tiếng Hy Lạp &quot;bromos&quot; – nghĩa là mùi hôi – do đặc trưng mùi rất khó chịu của hơi brom.')"
+		onmouseout="hideTooltip()">
+		<div>35</div>
+		<div>Br</div>
+		<div>Bromine</div>
+		<div>79,904</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Brom<br>
+				<strong>Tên tiếng Anh:</strong> Bromine<br>
+				<strong>Nguồn gốc:</strong> Tên gọi "Bromine" xuất phát từ tiếng Hy Lạp "bromos", nghĩa là mùi hôi – do đặc trưng mùi rất khó chịu của hơi brom.
+			</div>
+	</a>
+	<!-- Krypton -->
+	<a href="elements/Kr.html" class="element khi-hiem"
+		onmouseover="showTooltip('Krypton', ' Krypton', 'bắt nguồn từ tiếng Hy Lạp &quot;kryptos&quot; – nghĩa là ẩn giấu. do nó được phát hiện như một thành phần rất nhỏ trong không khí.')"
+		onmouseout="hideTooltip()">
+		<div>36</div>
+		<div>Kr</div>
+		<div>Krypton</div>
+		<div>83,80</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Krypton<br>
+				<strong>Tên tiếng Anh:</strong> Krypton<br>
+				<strong>Nguồn gốc:</strong> Tên "Krypton" bắt nguồn từ tiếng Hy Lạp “kryptos”, nghĩa là ẩn giấu. do nó được phát hiện như một thành phần rất nhỏ trong không khí.
+			</div>
+	</a>
+	<!-- Rubidium -->
+	<div style="grid-column: span 18"></div>
+	<a href="elements/Rb.html" class="element kim-loai"
+		onmouseover="showTooltip('Rubidi', ' Rubidium', 'bắt nguồn từ tiếng Latin &quot;rubidus&quot; – nghĩa là (đỏ đậm), do hai vạch phổ đỏ đặc trưng của nó khi quan sát qua phổ kế.')"
+		onmouseout="hideTooltip()">
+		<div>37</div>
+		<div>Rb</div>
+		<div>Rubidium</div>
+		<div>85,468</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Rubidi<br>
+				<strong>Tên tiếng Anh:</strong> Rubidium<br>
+				<strong>Nguồn gốc:</strong> Tên gọi "Rubidium" bắt nguồn từ tiếng Latin "rubidus" nghĩa là "đỏ đậm", do hai vạch phổ đỏ đặc trưng của nó khi quan sát qua phổ kế.
+			</div>
+	</a>
+	<!-- Strontium -->
+	<a href="elements/Sr.html" class="element kim-loai"
+		onmouseover="showTooltip('Stronti', ' Strontium', 'Đặt theo tên ngôi làng Strontian ở Scotland, nơi nó được phát hiện lần đầu vào cuối thế kỷ 18.')"
+		onmouseout="hideTooltip()">
+		<div>38</div>
+		<div>Sr</div>
+		<div>Strontium</div>
+		<div>87,62</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Stronti<br>
+				<strong>Tên tiếng Anh:</strong> Strontium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên ngôi làng Strontian ở Scotland, nơi nó được phát hiện lần đầu vào cuối thế kỷ 18.
+			</div>
+	</a>
+	<!-- Ytrium -->
+	<a href="elements/Y.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Ytri', ' Ytrium', 'Đặt theo tên ngôi làng Ytterby ở Thụy Điển – nơi tìm ra nhiều nguyên tố đất hiếm.')"
+		onmouseout="hideTooltip()">
+		<div>39</div>
+		<div>Y</div>
+		<div>Yttrium</div>
+		<div>88,906</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Ytri<br>
+				<strong>Tên tiếng Anh:</strong> Ytrium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên ngôi làng Ytterby ở Thụy Điển – nơi tìm ra nhiều nguyên tố đất hiếm.
+			</div>
+	</a>
+	<!-- Zirconium-->
+	<a href="elements/Zr.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Zirconi', ' Zirconium', 'Xuất phát từ từ &quot;zargun&quot; trong tiếng Ba Tư cổ, nghĩa là (vàng như bạc), liên quan đến khoáng zircon (ZrSiO₄).')"
+		onmouseout="hideTooltip()">
+		<div>40</div>
+		<div>Zr</div>
+		<div>Zirconium</div>
+		<div>91,224</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Zirconi<br>
+				<strong>Tên tiếng Anh:</strong> Zirconium<br>
+				<strong>Nguồn gốc:</strong> Xuất phát từ từ "zargun" trong tiếng Ba Tư cổ, nghĩa là “vàng như bạc”, liên quan đến khoáng zircon (ZrSiO₄).
+			</div>
+	</a>
+	<!-- Niobium -->
+	<a href="elements/Nb.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Niobi', ' Niobium', 'Được đặt theo tên Niobe – con gái của thần Tantalus trong thần thoại Hy Lạp, vì nguyên tố này thường được tìm thấy cùng với Tantalum.')"
+		onmouseout="hideTooltip()">
+		<div>41</div>
+		<div>Nb</div>
+		<div>Niobium</div>
+		<div>92,906</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Niobi<br>
+				<strong>Tên tiếng Anh:</strong> Niobium<br>
+				<strong>Nguồn gốc:</strong> Được đặt theo tên Niobe – con gái của thần Tantalus trong thần thoại Hy Lạp, vì nguyên tố này thường được tìm thấy cùng với Tantalum.
+			</div>
+	</a>
+	<!-- Molybdenum-->
+	<a href="elements/Mo.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Molypden', ' Molybdenum', 'Xuất phát từ tiếng Hy Lạp, &quot;molybdos&quot; - nghĩa là chì, vì ban đầu bị nhầm lẫn với quặng chì.')"
+		onmouseout="hideTooltip()">
+		<div>42</div>
+		<div>Mo</div>
+		<div>Molybdeum</div>
+		<div>95,95</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Molypden<br>
+				<strong>Tên tiếng Anh:</strong> Molybdenum<br>
+				<strong>Nguồn gốc:</strong> Xuất phát từ tiếng Hy Lạp technetos, nghĩa là chì, vì ban đầu bị nhầm lẫn với quặng chì.
+			</div>
+	</a>
+	<!-- Technetium -->
+	<a href="elements/Tc.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Tecneti', ' Technetium', 'Xuất phát từ tiếng Hy Lạp, &quot;technetos&quot; (τεχνητός), nghĩa là nhân tạo.')"
+		onmouseout="hideTooltip()">
+		<div>43</div>
+		<div>Tc</div>
+		<div>Technetium</div>
+		<div>(98)</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Tecneti<br>
+				<strong>Tên tiếng Anh:</strong> Technetium<br>
+				<strong>Nguồn gốc:</strong> Từ tiếng Hy Lạp "technetos" (τεχνητός), nghĩa là nhân tạo..
+			</div>
+	</a>
+	<!-- Ruthenium -->
+	<a href="elements/Ru.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Rutheni', ' Ruthenium', 'Xuất phát từ tên Latinh, &quot;Ruthenia&quot; là tên cũ của một khu vực bao gồm phần lớn nước Nga và Ukraine ngày nay..')"
+		onmouseout="hideTooltip()">
+		<div>44</div>
+		<div>Ru</div>
+		<div>Nuthenium</div>
+		<div>101,07</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Rutheni<br>
+				<strong>Tên tiếng Anh:</strong> Ruthenium<br>
+				<strong>Nguồn gốc:</strong> Xuất phát từ tên Latinh "Ruthenia", là tên cũ của một khu vực bao gồm phần lớn nước Nga và Ukraine ngày nay.
+			</div>
+	</a>
+	<!-- Rhodium -->
+	<a href="elements/Rh.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Rhodi', ' Rhodium', 'Xuất phát từ Từ tiếng Hy Lạp, &quot;rhodon&quot; (ῥόδον) nghĩa là hoa hồng. do một số hợp chất của Rhodium có màu hồng.')"
+		onmouseout="hideTooltip()">
+		<div>45</div>
+		<div>Rh</div>
+		<div>Rhodium</div>
+		<div>102,91</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Rhodi<br>
+				<strong>Tên tiếng Anh:</strong> Rhodium<br>
+				<strong>Nguồn gốc:</strong> Từ tiếng Hy Lạp "rhodon" (ῥόδον) nghĩa là hoa hồng. do một số hợp chất của Rhodium có màu hồng.
+			</div>
+	</a>
+	<!-- Palladium -->
+	<a href="elements/Pd.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Paladi', ' Palladium', 'đặt theo theo tên của tiểu hành tinh 2 Pallas - có thời từng được xem là hành tinh.')"
+		onmouseout="hideTooltip()">
+		<div>46</div>
+		<div>Pd</div>
+		<div>Palladium</div>
+		<div>106,42</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Paladi<br>
+				<strong>Tên tiếng Anh:</strong> Palladium<br>
+				<strong>Nguồn gốc:</strong> đặt theo theo tên của tiểu hành tinh 2 Pallas - có thời từng được xem là hành tinh.
+			</div>
+	</a>
+	<!-- Silver  -->
+	<a href="elements/Ag.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Bạc', ' Silver', 'Tên tiếng Anh Silver có nguồn gốc từ tiếng Anglo-Saxon seolfor, còn ký hiệu Ag bắt nguồn từ tiếng Latinh argentum, nghĩa là (trắng sáng).')"
+		onmouseout="hideTooltip()">
+		<div>47</div>
+		<div>Ag</div>
+		<div>Silver</div>
+		<div>107,87</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Bạc<br>
+				<strong>Tên tiếng Anh:</strong> Silver<br>
+				<strong>Nguồn gốc:</strong> Tên tiếng Anh Silver có nguồn gốc từ tiếng Anglo-Saxon seolfor, còn ký hiệu Ag bắt nguồn từ tiếng Latinh argentum, nghĩa là "trắng sáng".
+			</div>
+	</a>
+	<!-- Cadmium -->
+	<a href="elements/Cd.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Cadmi', ' Cadmium', 'tiếng Latinh, &quot;cadmia&quot; (khoáng chất calmine). Được đặt theo từ cadmia, tên cổ của oxit kẽm (ZnO).')"
+		onmouseout="hideTooltip()">
+		<div>48</div>
+		<div>Cd</div>
+		<div>Cadmium</div>
+		<div>112,41</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Cadmi<br>
+				<strong>Tên tiếng Anh:</strong> Cadmium<br>
+				<strong>Nguồn gốc:</strong> tiếng Latinh cadmia (khoáng chất calmine). Được đặt theo từ cadmia, tên cổ của oxit kẽm (ZnO).
+			</div>
+	</a>
+	<!-- Indium -->
+	<a href="elements/in.html" class="element kim-loai"
+		onmouseover="showTooltip('Indi', ' Indium', 'Tên gọi “Indium” xuất phát từ vạch quang phổ màu chàm (indigo) đặc trưng của nó khi được phân tích bằng quang phổ kế.')"
+		onmouseout="hideTooltip()">
+		<div>49</div>
+		<div>In</div>
+		<div>Indium</div>
+		<div>114,82</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Indi<br>
+				<strong>Tên tiếng Anh:</strong> Indium<br>
+				<strong>Nguồn gốc:</strong> Tên gọi “Indium” xuất phát từ vạch quang phổ màu chàm (indigo) đặc trưng của nó khi được phân tích bằng quang phổ kế.
+			</div>
+	</a>
+	<!-- Tin (Stannum) -->
+	<a href="elements/Sn.html" class="element kim-loai"
+		onmouseover="showTooltip('Thiếc', ' Tin (Stannum)', 'Tên gọi tiếng Latinh &quot;stannum&quot; nghĩa là (cứng). Tên Stannum trong tiếng Latin có nghĩa là hợp kim bạc và chì, sau này dùng để chỉ nguyên tố thiếc.')"
+		onmouseout="hideTooltip()">
+		<div>50</div>
+		<div>Sn</div>
+		<div>Tin</div>
+		<div>118,71</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Thiếc<br>
+				<strong>Tên tiếng Anh:</strong> Tin (Stannum)<br>
+				<strong>Nguồn gốc:</strong> ký hiệu Sn ứng với tên tiếng Latinh stannum, nghĩa là "cứng". Tên Stannum trong tiếng Latin có nghĩa là hợp kim bạc và chì, sau này dùng để chỉ nguyên tố thiếc..
+			</div>
+	</a>
+	<!-- Antimony -->
+	<a href="elements/Sb.html" class="element kim-loai"
+		onmouseover="showTooltip('Antimon', ' Antimony', 'Tên gọi tiếng Hy Lạp, &quot;anti – monos&quot; nghĩa là (không đơn độc) (tiếng Latinh: stibium).')"
+		onmouseout="hideTooltip()">
+		<div>51</div>
+		<div>Sb</div>
+		<div>Antimony</div>
+		<div>121,76</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Antimon<br>
+				<strong>Tên tiếng Anh:</strong> Antimony<br>
+				<strong>Nguồn gốc:</strong> tiếng Hy Lạp anti – monos, nghĩa là "không đơn độc" (tiếng Latinh: stibium)
+			</div>
+	</a>
+	<!-- Tellurium -->
+	<a href="elements/Te.html" class="element phi-kim"
+		onmouseover="showTooltip('Teluri', ' Tellurium', 'xuất phát từ tiếng Latin , &quot;Tellus&quot; nghĩa là (Đất Mẹ).')"
+		onmouseout="hideTooltip()">
+		<div>52</div>
+		<div>Te</div>
+		<div>Tellurium</div>
+		<div>127,60</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Teluri<br>
+				<strong>Tên tiếng Anh:</strong> Tellurium<br>
+				<strong>Nguồn gốc:</strong> Tên "Tellurium" xuất phát từ tiếng Latin "Tellus", nghĩa là "Đất Mẹ".
+			</div>
+	</a>
+	<!-- Iodine -->
+	<a href="elements/l.html" class="element phi-kim"
+		onmouseover="showTooltip('Iod', ' Iodine', 'bắt nguồn từ tiếng Hy Lạp, &quot;ioeides&quot; nghĩa là (màu tím) – do màu hơi của nó khi thăng hoa.')"
+		onmouseout="hideTooltip()">
+		<div>53</div>
+		<div>I</div>
+		<div>Iodine</div>
+		<div>126,90</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Iod<br>
+				<strong>Tên tiếng Anh:</strong> Iodine<br>
+				<strong>Nguồn gốc:</strong> Tên gọi “Iodine” bắt nguồn từ tiếng Hy Lạp “ioeides”, nghĩa là “màu tím” – do màu hơi của nó khi thăng hoa.
+			</div>
+	</a>
+	<!-- Xenon -->
+	<a href="elements/Xe.html" class="element khi-hiem"
+		onmouseover="showTooltip('Xenon', ' Xenon', 'bắt nguồn từ tiếng Hy Lạp, &quot;xenos&quot; nghĩa là “lạ” hoặc “ngoại lai” – vì là nguyên tố hiếm trong khí quyển.')"
+		onmouseout="hideTooltip()">
+		<div>54</div>
+		<div>Xe</div>
+		<div>Xenon</div>
+		<div>131,29</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Xenon<br>
+				<strong>Tên tiếng Anh:</strong> Xenon<br>
+				<strong>Nguồn gốc:</strong> Tên “Xenon” bắt nguồn từ tiếng Hy Lạp “xenos” nghĩa là “lạ” hoặc “ngoại lai” – vì là nguyên tố hiếm trong khí quyển.
+			</div>
+	</a>
+	<!-- Caesium -->
+	<div style="grid-column: span 18"></div>
+	<a href="elements/Cs.html" class="element kim-loai"
+		onmouseover="showTooltip('Caesi', ' Caesium', 'xuất phát từ tiếng Latin, &quot;caesius&quot; nghĩa là (xanh da trời), ám chỉ các vạch quang phổ màu xanh sáng của nguyên tố này.')"
+		onmouseout="hideTooltip()">
+		<div>55</div>
+		<div>Cs</div>
+		<div>Caesium</div>
+		<div>132,91</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Caesi<br>
+				<strong>Tên tiếng Anh:</strong> Caesium<br>
+				<strong>Nguồn gốc:</strong> Tên “Caesium” xuất phát từ tiếng Latin "caesius" nghĩa là "xanh da trời", ám chỉ các vạch quang phổ màu xanh sáng của nguyên tố này.
+			</div>
+	</a>
+	<!-- Barium -->
+	<a href="elements/Ba.html" class="element kim-loai"
+		onmouseover="showTooltip('Bari', ' Barium', 'xuất phát từ tiếng Hy Lạp, &quot;barys (βαρύς)&quot; nghĩa là (nặng), do mật độ lớn của khoáng chất chứa Bari.')"
+		onmouseout="hideTooltip()">
+		<div>56</div>
+		<div>Ba</div>
+		<div>Barium</div>
+		<div>137,33</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Bari<br>
+				<strong>Tên tiếng Anh:</strong> Barium<br>
+				<strong>Nguồn gốc:</strong> Tên gọi “Barium” xuất phát từ tiếng Hy Lạp "barys" (βαρύς), nghĩa là "nặng", do mật độ lớn của khoáng chất chứa Bari.
+			</div>
+	</a>
+	<a href="#" class="element kim-loai-chuyen-tiep"><div>*</div><div></div><div></div><div></div></a>
+	<!-- Hafnium -->
+	<a href="elements/Hf.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Hafni', ' Hafnium', 'xuất phát từ, &quot;Hafnia&quot; tên Latin của thành phố Copenhagen, nơi nguyên tố này được phát hiện..')"
+		onmouseout="hideTooltip()">
+		<div>72</div>
+		<div>Hf</div>
+		<div>Hafnium</div>
+		<div>178,49</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Hafni<br>
+				<strong>Tên tiếng Anh:</strong> Hafnium<br>
+				<strong>Nguồn gốc:</strong> Tên “Hafnium” xuất phát từ “Hafnia”, tên Latin của thành phố Copenhagen, nơi nguyên tố này được phát hiện.
+			</div>
+	</a>
+	<!-- Tantalum -->
+	<a href="elements/Ta.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Tantali', ' Tantalum', 'đặt theo danh xưng của vua Tantalus - cha của Niobe trong thần thoại Hy Lạp.')"
+		onmouseout="hideTooltip()">
+		<div>73</div>
+		<div>Ta</div>
+		<div>Tantalum</div>
+		<div>180,95</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Tantali<br>
+				<strong>Tên tiếng Anh:</strong> Tantalum<br>
+				<strong>Nguồn gốc:</strong> đặt theo danh xưng của vua Tantalus - cha của Niobe trong thần thoại Hy Lạp.
+			</div>
+	</a>
+	<!-- Tungsten  -->
+	<a href="elements/W.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Wolfram', ' Tungsten', 'Tên Wolfram xuất phát từ khoáng vật wolframite, còn Tungsten bắt nguồn từ tiếng Thụy Điển (tung sten) nghĩa là “đá nặng”.')"
+		onmouseout="hideTooltip()">
+		<div>74</div>
+		<div>W</div>
+		<div>Tungsten</div>
+		<div>183,84</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Wolfram<br>
+				<strong>Tên tiếng Anh:</strong> Tungsten<br>
+				<strong>Nguồn gốc:</strong> Tên Wolfram xuất phát từ khoáng vật wolframite, còn Tungsten bắt nguồn từ tiếng Thụy Điển "tung sten" nghĩa là “đá nặng”.
+			</div>
+	</a>
+	<!-- Rhenium -->
+	<a href="elements/Re.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Rheni', ' Rhenium', 'tiếng Latinh &quot;Rhenia&quot;, nghĩa là sông (Rhine) - con sông chảy từ Graubünden ở đông Anpơ Thụy Sĩ ra bờ biển Bắc ở Hà Lan..')"
+		onmouseout="hideTooltip()">
+		<div>75</div>
+		<div>Re</div>
+		<div>Rhenium</div>
+		<div>186,21</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Rheni<br>
+				<strong>Tên tiếng Anh:</strong> Rhenium<br>
+				<strong>Nguồn gốc:</strong> tiếng Latinh Rhenia, nghĩa là sông "Rhine" - con sông chảy từ Graubünden ở đông Anpơ Thụy Sĩ ra bờ biển Bắc ở Hà Lan..
+			</div>
+	</a>
+	<!-- Osmium -->
+	<a href="elements/Os.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Osmi', ' Osmium', 'xuất phát từ tiếng Hy Lạp, &quot;osme&quot;, nghĩa là (mùi), do hợp chất của nó có mùi rất mạnh.')"
+		onmouseout="hideTooltip()">
+		<div>76</div>
+		<div>Os</div>
+		<div>Osmium</div>
+		<div>190,23</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Osmi<br>
+				<strong>Tên tiếng Anh:</strong> Osmium<br>
+				<strong>Nguồn gốc:</strong> Tên gọi "Osmium" xuất phát từ tiếng Hy Lạp "osme", nghĩa là "mùi", do hợp chất của nó có mùi rất mạnh.
+			</div>
+	</a>
+	<!-- Iridium -->
+	<a href="elements/ir.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Iridi', ' Iridium', 'xuất phát từ tiếng Hy Lạp, &quot;iris&quot;, nghĩa là “cầu vồng”, do các muối của nó có màu sắc rất sặc sỡ.')"
+		onmouseout="hideTooltip()">
+		<div>77</div>
+		<div>lr</div>
+		<div>lridium</div>
+		<div>192,22</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Iridi<br>
+				<strong>Tên tiếng Anh:</strong> Iridium<br>
+				<strong>Nguồn gốc:</strong> Tên gọi "Iridium" bắt nguồn từ tiếng Hy Lạp “iris” nghĩa là “cầu vồng”, do các muối của nó có màu sắc rất sặc sỡ.
+			</div>
+	</a>
+	<!-- Platinum -->
+	<a href="elements/Pt.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Platin', ' Platinum', 'bắt nguồn từ tiếng Tây Ban Nha, &quot;platina&quot;, có nghĩa là “bạc nhỏ”, vì người Tây Ban Nha ban đầu nhầm lẫn nó với bạc.')"
+		onmouseout="hideTooltip()">
+		<div>78</div>
+		<div>Pt</div>
+		<div>Platium</div>
+		<div>195,08</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Platin<br>
+				<strong>Tên tiếng Anh:</strong> Platinum<br>
+				<strong>Nguồn gốc:</strong> Tên "Platinum" bắt nguồn từ tiếng Tây Ban Nha “platina”, có nghĩa là “bạc nhỏ”, vì người Tây Ban Nha ban đầu nhầm lẫn nó với bạc.
+			</div>
+	</a>
+	<!-- Gold (Aurum) -->
+	<a href="elements/Au.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Vàng', ' Gold (Aurum)', 'ký hiệu Au ứng với tên tiếng Latinh, &quot;aurum&quot;, nghĩa là (quầng sáng của bình minh) hoặc (ánh sáng rực rỡ).')"
+		onmouseout="hideTooltip()">
+		<div>79</div>
+		<div>Au</div>
+		<div>Gold</div>
+		<div>199,97</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Vàng<br>
+				<strong>Tên tiếng Anh:</strong> Gold (Aurum)<br>
+				<strong>Nguồn gốc:</strong> ký hiệu Au ứng với tên tiếng Latinh aurum, nghĩa là "quầng sáng của bình minh" hoặc "ánh sáng rực rỡ".
+			</div>
+	</a>
+	<!-- Mercury -->
+	<a href="elements/Hg.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Thủy ngân', ' Mercury (Hydrargyrum)', 'ký hiệu Hg ứng với tên cũ hydrargyrum, trong đó hydr- và argyros lần lượt có nghĩa là (nước) và (bạc) (trong tiếng Hy Lạp).')"
+		onmouseout="hideTooltip()">
+		<div>80</div>
+		<div>Hg</div>
+		<div>Mercury</div>
+		<div>200,59</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Thủy ngân<br>
+				<strong>Tên tiếng Anh:</strong> Mercury (Hydrargyrum)<br>
+				<strong>Nguồn gốc:</strong> ký hiệu Hg ứng với tên cũ hydrargyrum, trong đó hydr- và argyros lần lượt có nghĩa là "nước" và "bạc" (trong tiếng Hy Lạp)".
+			</div>
+	</a>
+	<!-- Thalium -->
+	<a href="elements/Tl.html" class="element kim-loai"
+		onmouseover="showTooltip('Tali', ' Thalium', 'xuất phát từ tiếng Hy Lạp, &quot;thallos (θάλλος)&quot;, nghĩa là chồi non màu xanh, gợi liên tưởng đến vạch phổ màu xanh.')"
+		onmouseout="hideTooltip()">
+		<div>81</div>
+		<div>Tl</div>
+		<div>Thallium</div>
+		<div>204,38</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Tali<br>
+				<strong>Tên tiếng Anh:</strong> Thalium<br>
+				<strong>Nguồn gốc:</strong> Tên gọi "Thallium" xuất phát từ tiếng Hy Lạp "thallos" (θάλλος), nghĩa là chồi non màu xanh, gợi liên tưởng đến vạch phổ màu xanh".
+			</div>
+	</a>
+	<!-- Lead (Plumbum) -->
+	<a href="elements/Pb.html" class="element kim-loai"
+		onmouseover="showTooltip('Chì', ' Lead (Plumbum)', 'Tên &quot;Lead&quot; xuất phát từ tiếng tiếng Anh cổ, còn (Pb) đến từ tiếng Latin Plumbum, nghĩa là chì.')"
+		onmouseout="hideTooltip()">
+		<div>82</div>
+		<div>Pb</div>
+		<div>Lead</div>
+		<div>207,20</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Chì<br>
+				<strong>Tên tiếng Anh:</strong> Lead (Plumbum)<br>
+				<strong>Nguồn gốc:</strong> Tên "Lead" bắt nguồn từ tiếng Anh cổ, còn "Pb" đến từ tiếng Latin Plumbum, nghĩa là chì".
+			</div>
+	</a>
+	<!-- Bismuth -->
+	<a href="elements/Bi.html" class="element kim-loai"
+		onmouseover="showTooltip('Bismuth', ' Bismuth', 'Tiếng Đức, &quot;Bisemutum&quot; đây vốn là cách viết sai của cụm từ Weisse Masse, nghĩa là (vật chất trắng).')"
+		onmouseout="hideTooltip()">
+		<div>83</div>
+		<div>Bi</div>
+		<div>Bsmuth</div>
+		<div>208,98</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Bismuth<br>
+				<strong>Tên tiếng Anh:</strong> Bismuth<br>
+				<strong>Nguồn gốc:</strong> tiếng Đức 'Bisemutum'; đây vốn là cách viết sai của cụm từ Weisse Masse, nghĩa là "vật chất trắng".
+			</div>
+	</a>
+	<!-- Polonium -->
+	<a href="elements/Po.html" class="element kim-loai"
+		onmouseover="showTooltip('Poloni', ' Polonium', 'tiếng Latinh Polonia, &quot;Ba Lan&quot; - quê quán của Marie Curie, người đầu tiên cô lập nguyên tố này.')"
+		onmouseout="hideTooltip()">
+		<div>84</div>
+		<div>Po</div>
+		<div>Polonium</div>
+		<div>[209]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Poloni<br>
+				<strong>Tên tiếng Anh:</strong> Polonium<br>
+				<strong>Nguồn gốc:</strong> tiếng Latinh Polonia, nghĩa là "Ba Lan" - quê quán của Marie Curie, người đầu tiên cô lập nguyên tố này.
+			</div>
+	</a>
+	<!-- Astatine -->
+	<a href="elements/At.html" class="element phi-kim"
+		onmouseover="showTooltip('Astatin', ' Astatine', 'bắt nguồn từ tiếng Hy Lạp, &quot;astatos&quot; - nghĩa là “không ổn định”, ám chỉ tính phóng xạ cực mạnh của nó.')"
+		onmouseout="hideTooltip()">
+		<div>85</div>
+		<div>At</div>
+		<div>Astatine</div>
+		<div>[210]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Astatin<br>
+				<strong>Tên tiếng Anh:</strong> Astatine<br>
+				<strong>Nguồn gốc:</strong> Tên "Astatine" bắt nguồn từ tiếng Hy Lạp “astatos”, nghĩa là “không ổn định”, ám chỉ tính phóng xạ cực mạnh của nó.
+			</div>
+	</a>
+	<!-- Radon -->
+	<a href="elements/Rn.html" class="element khi-hiem"
+		onmouseover="showTooltip('Radon', ' Radon', 'đặt theo tên của nguyên tố radi, bởi vì đầu tiên radon được phát hiện khi nó thoát ra từ radi trong quá trình phân rã phóng xạ.')"
+		onmouseout="hideTooltip()">
+		<div>86</div>
+		<div>Rn</div>
+		<div>Radon</div>
+		<div>[222]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Radon<br>
+				<strong>Tên tiếng Anh:</strong> Radon<br>
+				<strong>Nguồn gốc:</strong> đặt theo tên của nguyên tố radi, bởi vì đầu tiên radon được phát hiện khi nó thoát ra từ radi trong quá trình phân rã phóng xạ.
+			</div>
+	</a>
+	<!-- Francium -->
+	<div style="grid-column: span 18"></div>
+	<a href="elements/Fr.html" class="element kim-loai"
+		onmouseover="showTooltip('Franci', ' Francium', 'Tên &quot;Francium&quot; được đặt theo nước Pháp (France) – quê hương của người khám phá.')"
+		onmouseout="hideTooltip()">
+		<div>87</div>
+		<div>Fr</div>
+		<div>Francium</div>
+		<div>[223]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Franci<br>
+				<strong>Tên tiếng Anh:</strong> Francium<br>
+				<strong>Nguồn gốc:</strong> Tên "Francium" được đặt theo nước Pháp (France) – quê hương của người khám phá.
+			</div>
+	</a>
+	<!-- Radium -->
+	<a href="elements/Ra.html" class="element kim-loai"
+		onmouseover="showTooltip('Radi', ' Radium', 'bắt nguồn từ tiếng Latin radius, nghĩa là &quot;tia sáng&quot; – do nó phát ra bức xạ mạnh.')"
+		onmouseout="hideTooltip()">
+		<div>88</div>
+		<div>Ra</div>
+		<div>Radium</div>
+		<div>[226,03]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Radi<br>
+				<strong>Tên tiếng Anh:</strong> Radium<br>
+				<strong>Nguồn gốc:</strong> Tên “Radium” bắt nguồn từ tiếng Latin radius, nghĩa là “tia sáng” – do nó phát ra bức xạ mạnh.
+			</div>
+	</a>
+	<a href="#" class="element kim-loai-chuyen-tiep"><div>**</div><div></div><div></div><div></div></a>
+	<!-- Rutherfordium -->
+	<a href="elements/Rf.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Rutherfordi', ' Rutherfordium', 'Đặt theo tên nhà vật lý Ernest Rutherford, người có đóng góp to lớn cho mô hình nguyên tử hiện đại.')"
+		onmouseout="hideTooltip()">
+		<div>104</div>
+		<div>Rf</div>
+		<div>Rutherfordium</div>
+		<div>[267]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Rutherfordi<br>
+				<strong>Tên tiếng Anh:</strong> Rutherfordium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên nhà vật lý Ernest Rutherford, người có đóng góp to lớn cho mô hình nguyên tử hiện đại.
+			</div>
+	</a>
+	<!-- Dubnium -->
+	<a href="elements/Db.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Dubni', ' Dubnium', 'Đặt theo tên thành phố Dubna (Nga), nơi Viện Liên hợp Nghiên cứu Hạt nhân (JINR) đặt trụ sở – nơi nguyên tố này được tổng hợp lần đầu.')"
+		onmouseout="hideTooltip()">
+		<div>105</div>
+		<div>Db</div>
+		<div>Dubnium</div>
+		<div>[207]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Dubni<br>
+				<strong>Tên tiếng Anh:</strong> Dubnium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên thành phố Dubna (Nga), nơi Viện Liên hợp Nghiên cứu Hạt nhân (JINR) đặt trụ sở – nơi nguyên tố này được tổng hợp lần đầu.
+			</div>
+	</a>
+	<!-- Seaborgium -->
+	<a href="elements/Sg.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Seaborgi', ' Seaborgium', 'Đặt theo tên nhà hóa học người Mỹ Glenn T. Seaborg, người có công lớn trong việc phát hiện và nghiên cứu các nguyên tố siêu urani.')"
+		onmouseout="hideTooltip()">
+		<div>106</div>
+		<div>Sg</div>
+		<div>Seaborgium</div>
+		<div>[269]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Seaborgi<br>
+				<strong>Tên tiếng Anh:</strong> Seaborgium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên nhà hóa học người Mỹ Glenn T. Seaborg, người có công lớn trong việc phát hiện và nghiên cứu các nguyên tố siêu urani.
+			</div>
+	</a>
+	<!-- Bohrium -->
+	<a href="elements/Bh.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Bohri', ' Bohrium', ' Được đặt theo tên nhà vật lý Niels Bohr – nhà khoa học Đan Mạch nổi tiếng với mô hình nguyên tử và đóng góp quan trọng cho cơ học lượng tử.')"
+		onmouseout="hideTooltip()">
+		<div>107</div>
+		<div>Bh</div>
+		<div>Bohrium</div>
+		<div>[267]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Bohri<br>
+				<strong>Tên tiếng Anh:</strong> Bohrium<br>
+				<strong>Nguồn gốc:</strong> Được đặt theo tên nhà vật lý Niels Bohr – nhà khoa học Đan Mạch nổi tiếng với mô hình nguyên tử và đóng góp quan trọng cho cơ học lượng tử.
+			</div>
+	</a>
+	<!-- Hassium -->
+	<a href="elements/Hs.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Hassi', ' Hassium', ' Đặt theo tên bang Hessen ở Đức – nơi đặt Viện nghiên cứu GSI Helmholtz Centre for Heavy Ion Research (Darmstadt, Đức), nơi nguyên tố được phát hiện.')"
+		onmouseout="hideTooltip()">
+		<div>108</div>
+		<div>Hs</div>
+		<div>Hassium</div>
+		<div>[207]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Hassi<br>
+				<strong>Tên tiếng Anh:</strong> Hassium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên bang Hessen ở Đức – nơi đặt Viện nghiên cứu GSI Helmholtz Centre for Heavy Ion Research (Darmstadt, Đức), nơi nguyên tố được phát hiện.
+			</div>
+	</a>
+	<!-- Meitnerium -->
+	<a href="elements/Mt.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Meitneri', ' Meitnerium', ' Đặt theo tên của Lise Meitner, nhà vật lý người Áo gốc Do Thái, một trong những người tiên phong trong lĩnh vực phân hạch hạt nhân.')"
+		onmouseout="hideTooltip()">
+		<div>109</div>
+		<div>Mt</div>
+		<div>Meitnerium</div>
+		<div>[278]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Meitneri<br>
+				<strong>Tên tiếng Anh:</strong> Meitnerium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên của Lise Meitner, nhà vật lý người Áo gốc Do Thái, một trong những người tiên phong trong lĩnh vực phân hạch hạt nhân.
+			</div>
+	</a>
+	<!-- Darmstadtium -->
+	<a href="elements/Ds.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Darmstadti', ' Darmstadtium', ' Đặt theo tên thành phố Darmstadt ở Đức – nơi có Viện nghiên cứu GSI Helmholtz, nơi nguyên tố được tổng hợp lần đầu.')"
+		onmouseout="hideTooltip()">
+		<div>110</div>
+		<div>Ds</div>
+		<div>Darmstadtium</div>
+		<div>[281]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Darmstadti<br>
+				<strong>Tên tiếng Anh:</strong> Darmstadtium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên thành phố Darmstadt ở Đức – nơi có Viện nghiên cứu GSI Helmholtz, nơi nguyên tố được tổng hợp lần đầu.
+			</div>
+	</a>
+	<!-- Roentgenium -->
+	<a href="elements/Rg.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Roentgeni', ' Roentgenium', ' Đặt theo tên nhà vật lý người Đức Wilhelm Conrad Röntgen, người phát hiện ra tia X năm 1895.')"
+		onmouseout="hideTooltip()">
+		<div>111</div>
+		<div>Rg</div>
+		<div>Roentgenium</div>
+		<div>[281]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Roentgeni<br>
+				<strong>Tên tiếng Anh:</strong> Roentgenium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên nhà vật lý người Đức Wilhelm Conrad Röntgen, người phát hiện ra tia X năm 1895.
+			</div>
+	</a>
+	<!-- Copernicium -->
+	<a href="elements/Cn.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Copernixi', ' Copernicium', ' Đặt theo tên của nhà thiên văn học nổi tiếng Nicolaus Copernicus – người đưa ra mô hình nhật tâm thay cho mô hình địa tâm.')"
+		onmouseout="hideTooltip()">
+		<div>112</div>
+		<div>Cn</div>
+		<div>Copernicium</div>
+		<div>[285]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Copernixi<br>
+				<strong>Tên tiếng Anh:</strong> Copernicium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên của nhà thiên văn học nổi tiếng Nicolaus Copernicus – người đưa ra mô hình nhật tâm thay cho mô hình địa tâm.
+			</div>
+	</a>
+<!-- Nihonium -->	
+	<a href="elements/Nh.html" class="element kim-loai"
+		onmouseover="showTooltip('Nihoni', ' Nihonium', ' Đặt theo tên nước Nhật Bản (Nihon) – nơi nguyên tố được phát hiện. Đây là nguyên tố đầu tiên được đặt tên theo Nhật Bản.')"
+		onmouseout="hideTooltip()">
+		<div>113</div>
+		<div>Nh</div>
+		<div>Nihonium</div>
+		<div>[286]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Nihoni<br>
+				<strong>Tên tiếng Anh:</strong> Nihonium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên nước Nhật Bản (Nihon) – nơi nguyên tố được phát hiện. Đây là nguyên tố đầu tiên được đặt tên theo Nhật Bản.
+			</div>
+	</a>
+	<!-- Flerovium -->
+	<a href="elements/Fl.html" class="element kim-loai"
+		onmouseover="showTooltip('Flerovi', ' Flerovium', ' Đặt theo tên Viện Liên hợp Nghiên cứu Hạt nhân Dubna (Nga), nơi nguyên tố được tổng hợp – cụ thể là Phòng thí nghiệm Flerov, mang tên nhà vật lý Georgy Flyorov.')"
+		onmouseout="hideTooltip()">
+		<div>114</div>
+		<div>Fl</div>
+		<div>Flerovium</div>
+		<div>[289]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Flerovi<br>
+				<strong>Tên tiếng Anh:</strong> Flerovium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên Viện Liên hợp Nghiên cứu Hạt nhân Dubna (Nga), nơi nguyên tố được tổng hợp – cụ thể là Phòng thí nghiệm Flerov, mang tên nhà vật lý Georgy Flyorov.
+			</div>
+	</a>
+	<!-- Moscovium -->
+	<a href="elements/Mc.html" class="element kim-loai"
+		onmouseover="showTooltip('Moscovi', ' Moscovium', ' Đặt theo tên Moscow (Nga) – nơi có Viện Liên hợp Nghiên cứu Hạt nhân Dubna, đơn vị đồng phát hiện nguyên tố này.')"
+		onmouseout="hideTooltip()">
+		<div>115</div>
+		<div>Mc</div>
+		<div>Moscovium</div>
+		<div>[288]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Moscovi<br>
+				<strong>Tên tiếng Anh:</strong> Moscovium<br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên Moscow (Nga) – nơi có Viện Liên hợp Nghiên cứu Hạt nhân Dubna, đơn vị đồng phát hiện nguyên tố này.
+			</div>
+	</a>
+	<!-- Livermorium -->
+	<a href="elements/Lv.html" class="element kim-loai"
+		onmouseover="showTooltip('Livermori', ' Livermorium', ' Được đặt theo tên Phòng thí nghiệm quốc gia Lawrence Livermore (Livermore National Laboratory, Mỹ). đơn vị đã hợp tác cùng Viện Liên hợp Nghiên cứu Hạt nhân tổng hợp ra nguyên tố này')"
+		onmouseout="hideTooltip()">
+		<div>116</div>
+		<div>Lv</div>
+		<div>Livermorium</div>
+		<div>[292]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Livermori<br>
+				<strong>Tên tiếng Anh:</strong> Livermorium<br>
+				<strong>Nguồn gốc:</strong> Được đặt theo tên Phòng thí nghiệm quốc gia Lawrence Livermore (Livermore National Laboratory, Mỹ). đơn vị đã hợp tác cùng Viện Liên hợp Nghiên cứu Hạt nhân tổng hợp ra nguyên tố này.
+			</div>
+	</a>
+	<!-- Tennessine -->
+	<a href="elements/Ts.html" class="element kim-loai"
+		onmouseover="showTooltip('Livermori', ' Livermorium', ' Được đặt theo tên Phòng thí nghiệm quốc gia Lawrence Livermore (Livermore National Laboratory, Mỹ). đơn vị đã hợp tác cùng Viện Liên hợp Nghiên cứu Hạt nhân tổng hợp ra nguyên tố này')"
+		onmouseout="hideTooltip()">
+		<div>117</div>
+		<div>Ts</div>
+		<div>Tenessine</div>
+		<div>[294]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Livermori<br>
+				<strong>Tên tiếng Anh:</strong> Livermorium<br>
+				<strong>Nguồn gốc:</strong> Được đặt theo tên Phòng thí nghiệm quốc gia Lawrence Livermore (Livermore National Laboratory, Mỹ). đơn vị đã hợp tác cùng Viện Liên hợp Nghiên cứu Hạt nhân tổng hợp ra nguyên tố này.
+			</div>
+	</a>
+	<!-- Oganesson -->
+	<a href="elements/Og.html" class="element khi-hiem"
+		onmouseover="showTooltip('Oganesson', ' Oganesson', ' Được đặt theo tên Phòng thí nghiệm quốc gia Lawrence Livermore (Livermore National Laboratory, Mỹ). đơn vị đã hợp tác cùng Viện Liên hợp Nghiên cứu Hạt nhân tổng hợp ra nguyên tố này')"
+		onmouseout="hideTooltip()">
+		<div>118</div>
+		<div>Og</div>
+		<div>Oganesson</div>
+		<div>[294]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Oganesson<br>
+				<strong>Tên tiếng Anh:</strong> Oganesson<br>
+				<strong>Nguồn gốc:</strong> Được đặt theo tên Phòng thí nghiệm quốc gia Lawrence Livermore (Livermore National Laboratory, Mỹ). đơn vị đã hợp tác cùng Viện Liên hợp Nghiên cứu Hạt nhân tổng hợp ra nguyên tố này.
+			</div>
+	</a>	
+	<div style="grid-column: span 3"></div>
+	<!-- Lanthanum -->
+	<a href="elements/La.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Lanthan', ' Lanthanum', ' bắt nguồn từ tiếng Hy Lạp, &quot;lanthanein&quot; có nghĩa là “ẩn giấu” vì nó được tìm thấy ẩn trong quặng của các nguyên tố đất hiếm khác.')"
+		onmouseout="hideTooltip()">
+		<div>57</div>
+		<div>La</div>
+		<div>Lanthanum</div>
+		<div>138,91</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Lanthan<br>
+				<strong>Tên tiếng Anh:</strong> Lanthanum<br>
+				<strong>Nguồn gốc:</strong> Tên gọi "Lanthanum" bắt nguồn từ tiếng Hy Lạp "lanthanein" có nghĩa là “ẩn giấu” vì nó được tìm thấy ẩn trong quặng của các nguyên tố đất hiếm khác.
+			</div>
+	</a>
+	<!-- Cerium -->
+	<a href="elements/Ce.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Ceri', ' Cerium', ' đặt tên tên vị thần nông nghiệp Ceres trong thần thoại La Mã, &quot;Cerium&quot; bắt nguồn từ tiểu hành tinh Ceres, được phát hiện 2 năm trước khi tìm ra nguyên tố này.')"
+		onmouseout="hideTooltip()">
+		<div>58</div>
+		<div>Ce</div>
+		<div>Cerium</div>
+		<div>140,12</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Ceri<br>
+				<strong>Tên tiếng Anh:</strong> Cerium<br>
+				<strong>Nguồn gốc:</strong> đặt tên tên vị thần nông nghiệp Ceres trong thần thoại La Mã. "Cerium" bắt nguồn từ tiểu hành tinh Ceres, được phát hiện 2 năm trước khi tìm ra nguyên tố này.
+			</div>
+	</a>
+	<!-- Praseodymium -->
+	<a href="elements/Pr.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Praseodymi', ' Praseodymium', ' xuất phát từ tiếng Hy Lạp, &quot;prasios&quot; nghĩa là xanh lục (didymos) nghĩa là song sinh.')"
+		onmouseout="hideTooltip()">
+		<div>59</div>
+		<div>Pr</div>
+		<div>Praseomydium</div>
+		<div>140,91</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Praseodymi<br>
+				<strong>Tên tiếng Anh:</strong> Praseodymium<br>
+				<strong>Nguồn gốc:</strong> Tên "Praseodymium" xuất phát từ tiếng Hy Lạp: "prasios" nghĩa là xanh lục "didymos" nghĩa là song sinh.
+			</div>
+	</a>
+	<!-- Neodymium -->
+	<a href="elements/Nd.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Neodymi', ' Neodymium', ' xuất phát từ tiếng Hy Lạp, &quot;neos didymos&quot; nghĩa là (cặp song sinh mới).')"
+		onmouseout="hideTooltip()">
+		<div>60</div>
+		<div>Nd</div>
+		<div>Neodymium</div>
+		<div>144,24</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Neodymi<br>
+				<strong>Tên tiếng Anh:</strong> Neodymium<br>
+				<strong>Nguồn gốc:</strong> tiếng Hy Lạp neos didymos, nghĩa là "cặp song sinh mới".
+			</div>
+	</a>
+	<!-- Promethium -->
+	<a href="elements/Pm.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Promethi', ' Promethium', ' đặt theo tên Prometheus trong thần thoại Hy Lạp, &quot;Prometheus&quot; là người đã đánh cắp lửa từ các thần và giao nó cho con người.')"
+		onmouseout="hideTooltip()">
+		<div>61</div>
+		<div>Pm</div>
+		<div>Promethium</div>
+		<div>[145]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Promethi<br>
+				<strong>Tên tiếng Anh:</strong> Promethium<br>
+				<strong>Nguồn gốc:</strong> đặt theo tên Prometheus trong thần thoại Hy Lạp. Prometheus là người đã đánh cắp lửa từ các thần và giao nó cho con người.
+			</div>
+	</a>
+	<!-- Samarium -->
+	<a href="elements/Sm.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Promethi', ' Promethium', ' đặt theo tên Prometheus trong thần thoại Hy Lạp, &quot;Prometheus&quot; là người đã đánh cắp lửa từ các thần và giao nó cho con người.')"
+		onmouseout="hideTooltip()">
+		<div>62</div>
+		<div>Sm</div>
+		<div>Samarium</div>
+		<div>150,36</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Promethi<br>
+				<strong>Tên tiếng Anh:</strong> Promethium<br>
+				<strong>Nguồn gốc:</strong> đặt theo tên Prometheus trong thần thoại Hy Lạp. Prometheus là người đã đánh cắp lửa từ các thần và giao nó cho con người.
+			</div>
+	</a>
+	<!-- Europium -->
+	<a href="elements/Eu.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Europi', ' Europium', ' Tên gọi Europium đặt theo tên châu lục Europe (Châu Âu).')"
+		onmouseout="hideTooltip()">
+		<div>63</div>
+		<div>Eu</div>
+		<div>Europium</div>
+		<div>151,96</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Europi<br>
+				<strong>Tên tiếng Anh:</strong> Europium<br>
+				<strong>Nguồn gốc:</strong> Tên gọi Europium đặt theo tên châu lục Europe (Châu Âu).
+			</div>
+	</a>
+	<!-- Gadonlinium -->
+	<a href="elements/Gd.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Terbi', ' Gadonlinium', ' đặt theo họ nhà hóa học, vật lý học và khoáng vật học Johan Gadolin.')"
+		onmouseout="hideTooltip()">
+		<div>64</div>
+		<div>Gd</div>
+		<div>Gadolinium</div>
+		<div>157,25</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Terbi<br>
+				<strong>Tên tiếng Anh:</strong> Gadonlinium<br>
+				<strong>Nguồn gốc:</strong> đặt theo họ nhà hóa học, vật lý học và khoáng vật học Johan Gadolin.
+			</div>
+	</a>
+	<!-- Terbium -->
+	<a href="elements/Tb.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Gadolini', ' Terbium', ' xuất phát từ tên làng Ytterby ở Thụy Điển, nơi tìm ra nhiều nguyên tố đất hiếm')"
+		onmouseout="hideTooltip()">
+		<div>65</div>
+		<div>Tb</div>
+		<div>Terbium</div>
+		<div>158,93</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Gadolini<br>
+				<strong>Tên tiếng Anh:</strong> Terbiumm <br>
+				<strong>Nguồn gốc:</strong> Tên gọi “Terbium” xuất phát từ tên làng Ytterby ở Thụy Điển, nơi tìm ra nhiều nguyên tố đất hiếm.
+			</div>
+	</a>
+	<!-- Dysprosium -->
+	<a href="elements/Dy.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Holmi', ' Dysprosium', ' bắt nguồn từ tiếng Latinh, nguồn từ tiếng Hy Lạp “dysprositos” nghĩa là “khó lấy được”. ')"
+		onmouseout="hideTooltip()">
+		<div>66</div>
+		<div>Dy</div>
+		<div>Dysprocium</div>
+		<div>162,50</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Holmi<br>
+				<strong>Tên tiếng Anh:</strong> Dysprosium <br>
+				<strong>Nguồn gốc:</strong> Tên “Holmium” bắt nguồn từ tiếng Latinh “Holmia” – tên Latinh của thành phố Stockholm (Thụy Điển).
+			</div>
+	</a>
+	<!-- Holmium -->
+	<a href="elements/Ho.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Holmi', ' Holmium', ' Tên “Dysprosium” bắt nguồn từ tiếng Hy Lạp,&quot;dysprositos&quot; nghĩa là “khó lấy được”. ')"
+		onmouseout="hideTooltip()">
+		<div>67</div>
+		<div>Ho</div>
+		<div>Holmium</div>
+		<div>164,93</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Holmi<br>
+				<strong>Tên tiếng Anh:</strong> Holmium <br>
+				<strong>Nguồn gốc:</strong> Tên “Dysprosium” bắt nguồn từ tiếng Hy Lạp “dysprositos” nghĩa là “khó lấy được”.
+			</div>
+	</a>
+	<!-- Erbium -->
+	<a href="elements/Er.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Erbi', ' Erbium', ' xuất phát từ tên ngôi làng Ytterby (Thụy Điển), nơi nhiều nguyên tố đất hiếm được phát hiện. ')"
+		onmouseout="hideTooltip()">
+		<div>68</div>
+		<div>Er</div>
+		<div>Erbium</div>
+		<div>167,26</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Erbi<br>
+				<strong>Tên tiếng Anh:</strong> Erbium <br>
+				<strong>Nguồn gốc:</strong> Tên “Erbium” xuất phát từ tên ngôi làng Ytterby (Thụy Điển), nơi nhiều nguyên tố đất hiếm được phát hiện.
+			</div>
+	</a>
+	<!-- Thulium -->
+	<a href="elements/Tm.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Thuli', ' Thulium', ' bắt nguồn từ “Thule” – tên cổ của vùng Scandinavia trong thần thoại Hy Lạp. ')"
+		onmouseout="hideTooltip()">
+		<div>69</div>
+		<div>Tm</div>
+		<div>Thulium</div>
+		<div>168,93</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Thuli<br>
+				<strong>Tên tiếng Anh:</strong> Thulium <br>
+				<strong>Nguồn gốc:</strong> Tên gọi “Thulium” bắt nguồn từ “Thule” – tên cổ của vùng Scandinavia trong thần thoại Hy Lạp.
+			</div>
+	</a>
+	<!-- Yterbium -->
+	<a href="elements/Yb.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Yterbi', ' Yterbium', ' Được đặt tên theo làng Ytterby (Thụy Điển) – nơi phát hiện ra nhiều nguyên tố đất hiếm. ')"
+		onmouseout="hideTooltip()">
+		<div>70</div>
+		<div>Yb</div>
+		<div>Ytterbium</div>
+		<div>173,05</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Yterbi<br>
+				<strong>Tên tiếng Anh:</strong> Yterbium <br>
+				<strong>Nguồn gốc:</strong> Được đặt tên theo làng Ytterby (Thụy Điển) – nơi phát hiện ra nhiều nguyên tố đất hiếm.
+			</div>
+	</a>
+	<!-- Lutetium -->
+	<a href="elements/Lu.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Luteti', ' Lutetium', ' bắt nguồn từ &quot;Lutetia&quot; – đặt theo địa danh La Mã, nghĩa là (Paris), Pháp. ')"
+		onmouseout="hideTooltip()">
+		<div>71</div>
+		<div>Lu</div>
+		<div>Lutetium</div>
+		<div>174,97</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Luteti<br>
+				<strong>Tên tiếng Anh:</strong> Lutetium <br>
+				<strong>Nguồn gốc:</strong> Tên gọi "Lutetium" bắt nguồn từ "Lutetia" – đặt theo địa danh La Mã, nghĩa là "Paris", Pháp.
+			</div>
+	</a>	
+	<div style="grid-column: span 3"></div>
+	<!-- Actinium -->
+		<a href="elements/Ac.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Luteti', ' Actinium', ' bắt nguồn từ tiếng Hy Lạp &quot;aktinos&quot; – nghĩa là tia sáng. ')"
+		onmouseout="hideTooltip()">
+		<div>89</div>
+		<div>Ac</div>
+		<div>Actinium</div>
+		<div>[227]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Luteti<br>
+				<strong>Tên tiếng Anh:</strong> Actinium <br>
+				<strong>Nguồn gốc:</strong> Tên gọi từ tiếng Hy Lạp "aktinos" nghĩa là tia sáng.
+			</div>
+	</a>
+	<!-- Thorium -->
+	<a href="elements/Th.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Luteti', ' Actinium', ' đặt theo tên thần sấm &quot;Thor&quot; trong thần thoại Scandinavia.. ')"
+		onmouseout="hideTooltip()">
+	<div>90</div>
+	<div>Th</div>
+	<div>Thorium</div>
+	<div>232,04</div>
+		<div class="tooltip">
+				<strong>Tên:</strong> Luteti<br>
+				<strong>Tên tiếng Anh:</strong> Actinium <br>
+				<strong>Nguồn gốc:</strong> đặt theo tên thần sấm Thor trong thần thoại Scandinavia.
+			</div>
+	</a>
+	<!-- Protactinium -->
+	<a href="elements/Pa.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Protactini', ' Protactinium', ' tiền tố protos trong tiếng Hy Lạp có nghĩa là (đầu tiên), bởi lẽ actini được tạo ra thông qua quá trình phân rã phóng xạ của protactini. ')"
+		onmouseout="hideTooltip()">
+		<div>91</div>
+		<div>Pa</div>
+		<div>Protactinium</div>
+		<div>213,04</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Protactini<br>
+				<strong>Tên tiếng Anh:</strong> Protactinium <br>
+				<strong>Nguồn gốc:</strong> tiền tố protos trong tiếng Hy Lạp có nghĩa là "đầu tiên", bởi lẽ actini được tạo ra thông qua quá trình phân rã phóng xạ của protactini.
+			</div>
+	</a>
+	<!-- Uranium -->
+	<a href="elements/U.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Urani', ' Uranium', ' Uranium được đặt tên theo hành tinh Uranus, nghĩa là (sao Thiên Vương), được phát hiện không lâu trước đó. ')"
+		onmouseout="hideTooltip()">
+		<div>92</div>
+		<div>U</div>
+		<div>Uranium</div>
+		<div>238,03</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Urani<br>
+				<strong>Tên tiếng Anh:</strong> Uranium <br>
+				<strong>Nguồn gốc:</strong> Uranium được đặt tên theo hành tinh Uranus, nghĩa là "sao Thiên Vương", được phát hiện không lâu trước đó.
+			</div>
+	</a>
+	<!-- Neptunium -->
+	<a href="elements/Np.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Neptuni', ' Neptunium', ' Đặt theo tên của hành tinh Neptune nghĩa là (sao Hải Vương) hay (Hải Vương tinh). ')"
+		onmouseout="hideTooltip()">
+		<div>93</div>
+		<div>Np</div>
+		<div>Neptunium</div>
+		<div>[237]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Neptuni<br>
+				<strong>Tên tiếng Anh:</strong> Neptunium <br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên của hành tinh Neptune nghĩa là (sao Hải Vương) hay (Hải Vương tinh).
+			</div>
+	</a>
+	<!-- Plutonium -->
+	<a href="elements/Pu.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Plutoni', ' Plutonium', ' Đặt theo tên của hành tinh Pluto (Diêm Vương tinh). ')"
+		onmouseout="hideTooltip()">
+		<div>94</div>
+		<div>Pu</div>
+		<div>Plutonium</div>
+		<div>[244]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Plutoni<br>
+				<strong>Tên tiếng Anh:</strong> Plutonium <br>
+				<strong>Nguồn gốc:</strong> Đặt theo tên của hành tinh Pluto (Diêm Vương tinh).
+			</div>
+	</a>
+	<!-- Americium -->
+	<a href="elements/Am.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Americi', ' Americium', ' Được đặt theo tên châu Mỹ (America), tương tự như Europium (châu Âu). ')"
+		onmouseout="hideTooltip()">
+		<div>95</div>
+		<div>Am</div>
+		<div>Americium</div>
+		<div>[243]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Americi<br>
+				<strong>Tên tiếng Anh:</strong> Americium <br>
+				<strong>Nguồn gốc:</strong> Được đặt theo tên châu Mỹ (America), tương tự như Europium (châu Âu).
+			</div>
+	</a>
+	<!-- Curium -->
+	<a href="elements/Cm.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Curi', ' Curium', ' đặt theo họ của nhà vật lý học Pierre Curie và nhà vật lý học - hóa học Marie Curie, hai nhà khoa học tiên phong trong lĩnh vực phóng xạ. ')"
+		onmouseout="hideTooltip()">
+		<div>96</div>
+		<div>Cm</div>
+		<div>Curium</div>
+		<div>[247]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Curi<br>
+				<strong>Tên tiếng Anh:</strong> Curium <br>
+				<strong>Nguồn gốc:</strong> đặt theo họ của nhà vật lý học Pierre Curie và nhà vật lý học - hóa học Marie Curie, hai nhà khoa học tiên phong trong lĩnh vực phóng xạ.
+			</div>
+	</a>
+	<!-- Berkelium -->
+	<a href="elements/Bk.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Berkeli', ' Berkelium', ' đặt theo địa danh Berkeley, Bang California, Hoa Kỳ - nơi lần đầu tiên tổng hợp nguyên tố này. ')"
+		onmouseout="hideTooltip()">
+		<div>97</div>
+		<div>Bk</div>
+		<div>Berkelium</div>
+		<div>[247]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Berkeli<br>
+				<strong>Tên tiếng Anh:</strong> Berkelium <br>
+				<strong>Nguồn gốc:</strong> đặt theo địa danh Berkeley, Bang California, Hoa Kỳ - nơi lần đầu tiên tổng hợp nguyên tố này.
+			</div>
+	</a>
+	<!-- Californium -->
+	<a href="elements/Cf.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Californi', ' Californium', ' đặt theo địa danh California, Hoa Kỳ - nơi lần đầu tiên tổng hợp nguyên tố này. ')"
+		onmouseout="hideTooltip()">
+		<div>98</div>
+		<div>Cf</div>
+		<div>Californium</div>
+		<div>[251]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Californi<br>
+				<strong>Tên tiếng Anh:</strong> Californium <br>
+				<strong>Nguồn gốc:</strong> đặt theo địa danh California, Hoa Kỳ - nơi lần đầu tiên tổng hợp nguyên tố này.
+			</div>
+	</a>
+	<!-- Einsteinium -->
+	<a href="elements/Es.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Einsteini', ' Einsteinium', ' đặt theo tên của nhà vật lý học Albert Einstein. ')"
+		onmouseout="hideTooltip()">
+		<div>99</div>
+		<div>Es</div>
+		<div>Einsteinium</div>
+		<div>[252]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Einsteini<br>
+				<strong>Tên tiếng Anh:</strong> Einsteinium <br>
+				<strong>Nguồn gốc:</strong> đặt theo tên của nhà vật lý học Albert Einstein.
+			</div>
+	</a>
+	<!-- Fermium -->
+	<a href="elements/Fm.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Fermi', ' Fermium', ' đặt theo họ của nhà vật lý học Enrico Fermi. ')"
+		onmouseout="hideTooltip()">
+		<div>100</div>
+		<div>Fm</div>
+		<div>Fermium</div>
+		<div>[257]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Fermii<br>
+				<strong>Tên tiếng Anh:</strong> Fermium <br>
+				<strong>Nguồn gốc:</strong> đặt theo họ của nhà vật lý học Enrico Fermi.
+			</div>
+	</a>
+	<!-- Mendelevium -->
+	<a href="elements/Md.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Mendelevi', ' Mendelevium', ' đặt theo họ của nhà hóa học và nhà phát minh Dmitri Ivanovich Mendeleev, người sáng lập bảng tuần hoàn nguyên tố. ')"
+		onmouseout="hideTooltip()">
+		<div>101</div>
+		<div>Md</div>
+		<div>Mendelevium</div>
+		<div>[258]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Mendelevi<br>
+				<strong>Tên tiếng Anh:</strong> Mendelevium <br>
+				<strong>Nguồn gốc:</strong> đặt theo họ của nhà hóa học và nhà phát minh Dmitri Ivanovich Mendeleev, người sáng lập bảng tuần hoàn nguyên tố.
+			</div>
+	</a>
+	<!-- Nobelium -->
+	<a href="elements/No.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Nobeli', ' Nobelium', ' đặt theo họ của nhà hóa học, kỹ sư, nhà phát minh, nhà sản xuất vũ khí Alfred Nobel, nhà sáng lập giải Nobel. ')"
+		onmouseout="hideTooltip()">
+	 	<div>102</div>
+		<div>No</div>
+		<div>Nobelium</div>
+		<div>[259]</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Nobeli<br>
+				<strong>Tên tiếng Anh:</strong> Nobelium <br>
+				<strong>Nguồn gốc:</strong> đặt theo họ của nhà hóa học, kỹ sư, nhà phát minh, nhà sản xuất vũ khí Alfred Nobel, nhà sáng lập giải Nobel.
+			</div>
+	</a>
+	<!-- Lawrencium -->
+	<a href="elements/Lr.html" class="element kim-loai-chuyen-tiep"
+		onmouseover="showTooltip('Lawrenci', ' Lawrencium', ' Được đặt theo tên của Ernest O. Lawrence, người phát minh ra máy gia tốc cyclotron. ')"
+		onmouseout="hideTooltip()">
+		<div>103</div>
+		<div>Lr</div>
+		<div>Lowrencium</div>
+		<div>362</div>
+			<div class="tooltip">
+				<strong>Tên:</strong> Lawrenci<br>
+				<strong>Tên tiếng Anh:</strong> Lawrencium <br>
+				<strong>Nguồn gốc:</strong> Được đặt theo tên của Ernest O. Lawrence, người phát minh ra máy gia tốc cyclotron.
+			</div>
+	</a>
+
+
+	
+	 <!-- Tiếp tục thêm các nguyên tố tiếp theo tại đây tương tự -->	
+	 
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; background-color: #efeffa; padding: 20px; font-family: Arial;">
+	<!-- Bảng phân loại -->
+	<div style="display: flex; align-items: center; gap: 50px;">
+      <!-- Ghi chú -->
+      <div style="display: flex; flex-direction: column; gap: 18px; font-size: 14px;">
+        <div>*lanthanides</div>
+        <div>**actinides</div>
+      </div>
+      <!-- Ô màu -->
+      <div style="display: grid; grid-template-columns: repeat(2, 143px); grid-template-rows: repeat(2, 40px); gap: 2px; font-weight: bold;">
+        <div id="btn-kim-loai" class="category-box" style="background-color: #90d4d4;">Kim loại</div>
+        <div id="btn-phi-kim" class="category-box" style="background-color: #f4a3a3;">Phi kim</div>
+        <div id="btn-kim-loai-chuyen-tiep" class="category-box" style="background-color: #d5b772;">Kim loại chuyển tiếp</div>
+        <div id="btn-khi-hiem" class="category-box" style="background-color: #f2d21c;">Khí hiếm</div>
+      </div>
+    </div>	
+  </div>
+    
+  <div class="periodic-table" > 
+	<div style="grid-column: span 11"></div>
+	<a href="elements/Nb_.html" class="element kim-loai-chuyen-tiep"><div>41</div><div>Nb</div><div>4d<sup>4</sup>5s<sup>1</sup></div></a>	
+	<a href="#" class="element kim-loai-chuyen-tiep"><div>44</div><div>Ru</div><div>4d<sup>7</sup>5s<sup>1</sup></div></a>
+	<a href="#" class="element kim-loai-chuyen-tiep"><div>45</div><div>Rh</div><div>4d<sup>8</sup>5s<sup>1</sup></div></a>
+	<a href="#" class="element kim-loai-chuyen-tiep"><div>46</div><div>Pd</div><div>4d<sup>10</sup>5s<sup>1</sup></div></a>
+	<a href="#" class="element kim-loai-chuyen-tiep"><div>74</div><div>W</div><div>4d<sup>4</sup>5s<sup>2</sup></div></a>
+	<a href="#" class="element kim-loai-chuyen-tiep"><div>78</div><div>Pt</div><div>4d<sup>9</sup>5s<sup>1</sup></div></a>
+	</div>
+  
+	
+</div> <!-- END -->
+<!-- Tooltip chung -->
+<div id="tooltip-fixed" class="tooltip-fixed"></div>
+
+<script>
+  function showTooltip(ten, tenTA, nguonGoc) {
+    const tooltip = document.getElementById("tooltip-fixed");
+    tooltip.innerHTML = `<strong>Tên:</strong> ${ten}<br>
+                         <strong>Tên tiếng Anh:</strong> ${tenTA}<br>
+                         <strong>Nguồn gốc:</strong> ${nguonGoc}`;
+    tooltip.classList.add("active");
+  }
+
+  function hideTooltip() {
+    const tooltip = document.getElementById("tooltip-fixed");
+    tooltip.classList.remove("active");
+  }
+</script>
+<script src="https://chat.taggoai.com/v2.js" data-taggo-botid="685c1010afdd12749cb625b8"></script>
+
+
+	<div style="position: relative; width: 2100px;">
+		<div style="position: absolute; top: -115px; left: 50%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">Một số cấu hình electron đặc biệt</div>
+	</div>
+	
+
+  <script>
+    const categories = [
+      { btnId: "btn-kim-loai", elementClass: "kim-loai" },
+      { btnId: "btn-phi-kim", elementClass: "phi-kim" },
+      { btnId: "btn-kim-loai-chuyen-tiep", elementClass: "kim-loai-chuyen-tiep" },
+      { btnId: "btn-khi-hiem", elementClass: "khi-hiem" }
+    ];
+    categories.forEach(({ btnId, elementClass }) => {
+      const btn = document.getElementById(btnId);
+      btn.addEventListener("mouseenter", () => {
+        document.querySelectorAll(`.element.${elementClass}`).forEach(el => {
+          el.classList.add("active-hover");
+        });
+        btn.classList.add("active");
+      });
+      btn.addEventListener("mouseleave", () => {
+        document.querySelectorAll(`.element.${elementClass}`).forEach(el => {
+          el.classList.remove("active-hover");
+        });
+        btn.classList.remove("active");
+      });
+    });
+  </script>   
+	<div style="position: relative; width: 640px;">
+		<div style="position: absolute; top: -750px; left: 23%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">IA</div>
+	</div>
+	<div style="position: relative; width: 760px;">
+		<div style="position: absolute; top: -685px; left: 28%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">IIA</div>
+	</div>	
+	<div style="position: relative; width: 890px;">
+		<div style="position: absolute; top: -550px; left: 31%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">IIIB</div>
+	</div>
+	<div style="position: relative; width: 1015px;">
+		<div style="position: absolute; top: -550px; left: 33%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">IVB</div>
+	</div>
+	<div style="position: relative; width: 1140px;">
+		<div style="position: absolute; top: -550px; left: 35%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">VB</div>
+	</div>
+	<div style="position: relative; width: 1260px;">
+		<div style="position: absolute; top: -550px; left: 36%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">VIB</div>
+	</div>
+	<div style="position: relative; width: 1380px;">
+		<div style="position: absolute; top: -550px; left: 38%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">VIIB</div>
+	</div>
+	<div style="position: relative; width: 1630px;">
+		<div style="position: absolute; top: -550px; left: 40%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">VIIIB</div>
+	</div>
+	<div style="position: relative; width: 1880px;">
+		<div style="position: absolute; top: -550px; left: 41%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">IB</div>
+	</div>
+	<div style="position: relative; width: 2000px;">
+		<div style="position: absolute; top: -550px; left: 41%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">IIB</div>
+	</div>
+	<div style="position: relative; width: 2120px;">
+		<div style="position: absolute; top: -685px; left: 42%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">IIIA</div>
+	</div>
+	<div style="position: relative; width: 2250px;">
+		<div style="position: absolute; top: -685px; left: 42.5%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">IVA</div>
+	</div>
+	<div style="position: relative; width: 2380px;">
+		<div style="position: absolute; top: -685px; left: 42.5%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">VA</div>
+	</div>
+	<div style="position: relative; width: 2500px;">
+		<div style="position: absolute; top: -685px; left: 43%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">VIA</div>
+	</div>
+	<div style="position: relative; width: 2620px;">
+		<div style="position: absolute; top: -685px; left: 43.5%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">VIIA</div>
+	</div>
+	<div style="position: relative; width: 2745px;">
+		<div style="position: absolute; top: -750px; left: 43.5%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">VIIIA</div>
+	</div>	
+	<div style="position: relative; width: 550px;">
+		<div style="position: absolute; top: -710px; left: 17%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">1</div>
+	</div>
+	<div style="position: relative; width: 550px;">
+		<div style="position: absolute; top: -640px; left: 17%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">2</div>
+	</div>
+	<div style="position: relative; width: 550px;">
+		<div style="position: absolute; top: -575px; left: 17%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">3</div>
+	</div>
+	<div style="position: relative; width: 550px;">
+		<div style="position: absolute; top: -510px; left: 17%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">4</div>
+	</div>
+	<div style="position: relative; width: 550px;">
+		<div style="position: absolute; top: -440px; left: 17%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">5</div>
+	</div>
+	<div style="position: relative; width: 550px;">
+		<div style="position: absolute; top: -370px; left: 17%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">6</div>
+	</div>
+	<div style="position: relative; width: 550px;">
+		<div style="position: absolute; top: -300px; left: 17%; transform: translateX(-50%); font-size: 15px; font-weight: bold;">7</div>
+	</div>    	
+	<a href="https://quizizz.com/embed/quiz/61c329d95b809c001d0f1842" class="link-button" target="_blank">
+    <b>CÂU HỎI TRẮC NGHIỆM</b>
+	</a>	
+	<a href="https://www.facebook.com/nguyen.minh.anh.733819/?locale=vi_VN" class="link-button1" target="_blank">
+    <b>LIÊN HỆ NẾU CẦN HỖ TRỢ</b>
+	</a> 
+	<a href="https://chat.openai.com" class="link-button_chatGPT" target="_blank">
+    <b>HỖ TRỢ - CHATGPT</b>
+	</a>
+
+<!-- Phát âm thanh tên nguyên tố Hoá học -->
+<!--
+	<script>
+	function speak(text) {
+		return new Promise((resolve) => {
+		const utterance = new SpeechSynthesisUtterance(text);
+		utterance.lang = 'vi-VN';
+		utterance.onend = resolve;
+		speechSynthesis.speak(utterance);
+		});
+	}
+
+// Hàm xử lý click: phát âm rồi chuyển trang
+	async function speakAndNavigate(event, text, url) {
+	event.preventDefault(); // Ngăn chuyển trang ngay lập tức
+	await speak(text);      // Đợi phát âm xong
+	window.location.href = url; // Chuyển trang
+	}
+	</script>
+
+-->
+
+
+
+<script>
+    function toggleSearchBox() {
+      const box = document.getElementById("searchBox");
+      if (box.style.display === "none" || box.style.display === "") {
+        box.style.display = "block";
+      } else {
+        box.style.display = "none";
+      }
+    }
+
+    function searchElements() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const elements = document.querySelectorAll(".element");
+
+      elements.forEach(el => {
+        const atomicNumber = el.children[0].innerText.toLowerCase();
+        const symbol = el.children[1].innerText.toLowerCase();
+        const name = el.children[2].innerText.toLowerCase();
+
+        if (atomicNumber.includes(input) || symbol.includes(input) || name.includes(input)) {
+          el.style.display = "flex";
+        } else {
+          el.style.display = "none";
+        }
+      });
+    }
+	
+
+  </script>
+  
+  
+  <script>
+function toggleSearchBox() {
+  const box = document.getElementById("searchBox");
+  if (box.style.display === "none" || box.style.display === "") {
+    box.style.display = "block";
+  } else {
+    box.style.display = "none";
+  }
+}
+
+function searchElements() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const elements = document.querySelectorAll(".element");
+
+  elements.forEach(el => {
+    const atomicNumber = el.children[0].innerText.toLowerCase();
+    const symbol = el.children[1].innerText.toLowerCase();
+    const name = el.children[2].innerText.toLowerCase();
+
+    if (atomicNumber.includes(input) || symbol.includes(input) || name.includes(input)) {
+      el.style.display = "flex";
+    } else {
+      el.style.display = "none";
+    }
+  });
+}
+</script>
+
+  <!-- MENU TOGGLE BUTTON -->
+<div class="menu-toggle" id="menuToggle" onclick="openMenu()">☰</div>
+<script>
+  function openMenu() {
+    document.getElementById("menuToggle").style.display = "none";
+    const icons = document.getElementById("menuIcons");
+    icons.classList.add("active");
+  }
+
+  function closeMenu() {
+    const icons = document.getElementById("menuIcons");
+    icons.classList.remove("active");
+
+    // Chờ hiệu ứng kết thúc rồi mới ẩn lại nút ☰
+    setTimeout(() => {
+      document.getElementById("menuToggle").style.display = "flex";
+    }, 300);
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+  }
+</script>
+
+
+</body>
+</html>
