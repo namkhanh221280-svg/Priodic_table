@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mô phỏng phản ứng hóa học</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #2a6cb3;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+      width: 200px;
+      border-radius: 5px;
+      border: 1px solid #999;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #2a6cb3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1c4f8c;
+    }
+
+    #ketqua {
+      margin-top: 20px;
+      padding: 15px;
+      font-size: 18px;
+      border: 2px dashed #2a6cb3;
+      background-color: #ffffff;
+      display: inline-block;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔬 Mô phỏng phản ứng hóa học</h1>
+
+  <p>Nhập tên hoặc ký hiệu 2 chất để xem phản ứng</p>
+  <input type="text" id="chat1" placeholder="Chất 1 (vd: Na)">
+  <input type="text" id="chat2" placeholder="Chất 2 (vd: H2O)">
+  <br>
+  <button onclick="phanUng()">Phản ứng</button>
+
+  <div id="ketqua"></div>
+
+  <script>
+    const phanUngDuLieu = [
+      {
+        chat1: ["na", "natri"],
+        chat2: ["h2o", "nước"],
+        phuongTrinh: "2Na + 2H₂O → 2NaOH + H₂ ↑",
+        moTa: "Phản ứng sủi bọt mạnh, sinh khí hydro và tạo dung dịch kiềm."
+      },
+      {
+        chat1: ["fe", "sắt"],
+        chat2: ["o2", "oxi"],
+        phuongTrinh: "4Fe + 3O₂ → 2Fe₂O₃",
+        moTa: "Sắt bị oxi hóa, tạo thành lớp gỉ sắt màu nâu đỏ."
+      },
+      {
+        chat1: ["hcl", "axit clohidric"],
+        chat2: ["naoh"],
+        phuongTrinh: "HCl + NaOH → NaCl + H₂O",
+        moTa: "Phản ứng trung hòa giữa axit và bazơ, tạo muối và nước."
+      },
+      {
+        chat1: ["c", "cacbon"],
+        chat2: ["o2", "oxi"],
+        phuongTrinh: "C + O₂ → CO₂",
+        moTa: "Tạo ra khí CO₂, tỏa nhiệt mạnh."
+      }
+    ];
+
+    function phanUng() {
+      const a = document.getElementById("chat1").value.trim().toLowerCase();
+      const b = document.getElementById("chat2").value.trim().toLowerCase();
+      const kq = document.getElementById("ketqua");
+
+      // Tìm phản ứng phù hợp
+      const phanUngTimThay = phanUngDuLieu.find(pu =>
+        (pu.chat1.includes(a) && pu.chat2.includes(b)) ||
+        (pu.chat1.includes(b) && pu.chat2.includes(a))
+      );
+
+      if (phanUngTimThay) {
+        kq.innerHTML = `
+          <strong>Phương trình:</strong><br> ${phanUngTimThay.phuongTrinh}<br><br>
+          <strong>Hiện tượng:</strong><br> ${phanUngTimThay.moTa}
+        `;
+        kq.style.borderColor = "#2a6cb3";
+      } else {
+        kq.innerHTML = "❌ Chưa có dữ liệu về phản ứng giữa hai chất này.";
+        kq.style.borderColor = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

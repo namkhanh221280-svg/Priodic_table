@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đoán Nguyên Tố Hóa Học</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4ff;
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2a5d9f;
+    }
+
+    #question {
+      font-size: 1.2em;
+      margin: 20px 0;
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 6px solid #2a5d9f;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      background-color: #2a5d9f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1d4479;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    #score {
+      margin-top: 10px;
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Đoán Nguyên Tố Hóa Học</h1>
+  <div id="question">Đang tải câu hỏi...</div>
+
+  <input type="text" id="answer" placeholder="Nhập tên nguyên tố hoặc ký hiệu...">
+  <button onclick="kiemTra()">Kiểm tra</button>
+
+  <div id="result"></div>
+  <div id="score">Điểm: 0</div>
+
+  <script>
+    const cauHoi = [
+      {
+        moTa: "Tôi là kim loại kiềm, ký hiệu Na, rất mềm và phản ứng mãnh liệt với nước. Tôi là ai?",
+        dapAn: ["natri", "na"]
+      },
+      {
+        moTa: "Tôi là khí không màu, không mùi, nhẹ nhất vũ trụ, có ký hiệu là H.",
+        dapAn: ["hydro", "h"]
+      },
+      {
+        moTa: "Tôi là nguyên tố tạo ra màu xanh lá trong pháo hoa và có ký hiệu là Ba.",
+        dapAn: ["bari", "ba"]
+      },
+      {
+        moTa: "Tôi là kim loại quý, chống ăn mòn tốt, dùng nhiều trong trang sức, có ký hiệu Pt.",
+        dapAn: ["platin", "platinum", "pt"]
+      },
+      {
+        moTa: "Tôi là phi kim có mặt trong tất cả các hợp chất hữu cơ, ký hiệu là C.",
+        dapAn: ["cacbon", "carbon", "c"]
+      }
+    ];
+
+    let diem = 0;
+    let cauHienTai;
+
+    function chonCauNgauNhien() {
+      const index = Math.floor(Math.random() * cauHoi.length);
+      cauHienTai = cauHoi[index];
+      document.getElementById("question").innerText = cauHienTai.moTa;
+      document.getElementById("answer").value = "";
+      document.getElementById("result").innerText = "";
+    }
+
+    function kiemTra() {
+      const cauTraLoi = document.getElementById("answer").value.trim().toLowerCase();
+      const ketQua = document.getElementById("result");
+
+      if (cauHienTai.dapAn.includes(cauTraLoi)) {
+        ketQua.innerHTML = "✅ Chính xác!";
+        ketQua.style.color = "green";
+        diem++;
+        document.getElementById("score").innerText = "Điểm: " + diem;
+        setTimeout(chonCauNgauNhien, 1500);
+      } else {
+        ketQua.innerHTML = "❌ Sai rồi! Thử lại nhé.";
+        ketQua.style.color = "red";
+      }
+    }
+
+    // Khởi động
+    chonCauNgauNhien();
+  </script>
+
+</body>
+</html>
